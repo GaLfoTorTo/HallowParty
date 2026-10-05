@@ -1,0 +1,174 @@
+[
+  {
+    "id": "F001", "linhagem": "fantasma", "category": "investigacao",
+    "description": "Encontre um objeto escondido em algum canto da decoração da festa"
+  },
+  {
+    "id": "F002", "linhagem": "fantasma", "category": "investigacao",
+    "description": "Localize um símbolo de caveira escondido na decoração"
+  },
+  {
+    "id": "F003", "linhagem": "fantasma", "category": "investigacao",
+    "description": "Descubra onde está a chave que o Fantasma escondeu"
+  },
+  {
+    "id": "F004", "linhagem": "fantasma", "category": "investigacao",
+    "description": "Encontre a mensagem secreta escondida em algum lugar da festa"
+  },
+  {
+    "id": "F005", "linhagem": "fantasma", "category": "investigacao",
+    "description": "Identifique um objeto que não deveria estar naquele lugar da decoração"
+  },
+  {
+    "id": "F006", "linhagem": "fantasma", "category": "observacao",
+    "description": "Descubra quantas caveiras existem no ambiente principal da festa"
+  },
+  {
+    "id": "F007", "linhagem": "fantasma", "category": "observacao",
+    "description": "Identifique qual a cor predominante na decoração do setor das bebidas"
+  },
+  {
+    "id": "F008", "linhagem": "fantasma", "category": "observacao",
+    "description": "Encontre um símbolo que se repete três ou mais vezes na decoração"
+  },
+  {
+    "id": "F009", "linhagem": "fantasma", "category": "observacao",
+    "description": "Descubra qual objeto da decoração mudou de lugar durante a noite"
+  },
+  {
+    "id": "F010", "linhagem": "fantasma", "category": "observacao",
+    "description": "Encontre a imagem específica de uma bruxa escondida na decoração"
+  },
+  {
+    "id": "F011", "linhagem": "fantasma", "category": "pessoas",
+    "description": "Encontre uma pessoa usando algum item vermelho na fantasia"
+  },
+  {
+    "id": "F012", "linhagem": "fantasma", "category": "pessoas",
+    "description": "Descubra quem está com uma moeda temática escondida no bolso"
+  },
+  {
+    "id": "F013", "linhagem": "fantasma", "category": "pessoas",
+    "description": "Encontre alguém que tenha chegado na festa antes das 21h"
+  },
+  {
+    "id": "F014", "linhagem": "fantasma", "category": "pessoas",
+    "description": "Pergunte a três pessoas diferentes qual o nome do Guardião da Herança"
+  },
+  {
+    "id": "F015", "linhagem": "fantasma", "category": "enigmas",
+    "description": "Resolva a charada: 'Eu falo sem boca e ouço sem ouvido. O que sou eu?' (Resposta: eco)"
+  },
+  {
+    "id": "V001", "linhagem": "vampiro", "category": "bebidas",
+    "description": "Experimente o Gumy Vermelho — o drink exclusivo do Vampiro"
+  },
+  {
+    "id": "V002", "linhagem": "vampiro", "category": "bebidas",
+    "description": "Faça um brinde com a bebida chamada 'Sangue do Vampiro'"
+  },
+  {
+    "id": "V003", "linhagem": "vampiro", "category": "bebidas",
+    "description": "Descubra qual bebida da festa é chamada de 'A Poção'"
+  },
+  {
+    "id": "V004", "linhagem": "vampiro", "category": "bebidas",
+    "description": "Encontre a bebida vermelha escondida entre as opções do bar"
+  },
+  {
+    "id": "V005", "linhagem": "vampiro", "category": "comidas",
+    "description": "Encontre e experimente o doce exclusivo do Vampiro"
+  },
+  {
+    "id": "V006", "linhagem": "vampiro", "category": "comidas",
+    "description": "Encontre o 'coração' do banquete — o prato principal da mesa"
+  },
+  {
+    "id": "V007", "linhagem": "vampiro", "category": "comidas",
+    "description": "Descubra qual comida da festa está relacionada à pista do Vampiro"
+  },
+  {
+    "id": "V008", "linhagem": "vampiro", "category": "interacao",
+    "description": "Encontre alguém que você ainda não conhecia e descubra seu nome"
+  },
+  {
+    "id": "V009", "linhagem": "vampiro", "category": "interacao",
+    "description": "Faça um brinde com outro convidado usando a frase 'Pela eternidade'"
+  },
+  {
+    "id": "V010", "linhagem": "vampiro", "category": "interacao",
+    "description": "Encontre o 'Servo do Vampiro' — alguém usando uma capa preta"
+  },
+  {
+    "id": "V011", "linhagem": "vampiro", "category": "interacao",
+    "description": "Descubra a palavra-chave conversando com outro convidado da linhagem Vampiro"
+  },
+  {
+    "id": "V012", "linhagem": "vampiro", "category": "social",
+    "description": "Tire uma foto temática com outro convidado mostrando as presas do Vampiro"
+  },
+  {
+    "id": "V013", "linhagem": "vampiro", "category": "social",
+    "description": "Reúna uma pessoa da linhagem Fantasma e uma da linhagem Zumbi numa foto"
+  },
+  {
+    "id": "V014", "linhagem": "vampiro", "category": "social",
+    "description": "Consiga que outra pessoa diga 'Eu sirvo ao Vampiro' sem rir"
+  },
+  {
+    "id": "Z001", "linhagem": "zumbi", "category": "desafios",
+    "description": "Caminhe como um zumbi por 30 segundos por um corredor da festa"
+  },
+  {
+    "id": "Z002", "linhagem": "zumbi", "category": "desafios",
+    "description": "Faça uma pose de morto-vivo e tire uma foto como evidência"
+  },
+  {
+    "id": "Z003", "linhagem": "zumbi", "category": "desafios",
+    "description": "Imite um zumbi (gemidos e movimentos) durante 10 segundos na frente de alguém"
+  },
+  {
+    "id": "Z004", "linhagem": "zumbi", "category": "desafios",
+    "description": "Faça a pequena coreografia do Thriller com outro convidado"
+  },
+  {
+    "id": "Z005", "linhagem": "zumbi", "category": "comida",
+    "description": "Encontre e experimente o 'Cérebro' do banquete — o doce especial dos Zumbis"
+  },
+  {
+    "id": "Z006", "linhagem": "zumbi", "category": "comida",
+    "description": "Encontre a comida escondida que o Zumbi deixou escondida na festa"
+  },
+  {
+    "id": "Z007", "linhagem": "zumbi", "category": "comida",
+    "description": "Identifique qual alimento da mesa temática tem a cor verde"
+  },
+  {
+    "id": "Z008", "linhagem": "zumbi", "category": "musica",
+    "description": "Dance quando a música tema dos Zumbis tocar — mostre que você sobreviveu"
+  },
+  {
+    "id": "Z009", "linhagem": "zumbi", "category": "musica",
+    "description": "Encontre alguém dançando e dance com essa pessoa por pelo menos 1 minuto"
+  },
+  {
+    "id": "Z010", "linhagem": "zumbi", "category": "musica",
+    "description": "Reproduza a coreografia simples ensinada pelo DJ quando ele der o sinal"
+  },
+  {
+    "id": "Z011", "linhagem": "zumbi", "category": "interacao",
+    "description": "Faça uma foto com outro Zumbi mostrando as 'feridas' de vocês"
+  },
+  {
+    "id": "Z012", "linhagem": "zumbi", "category": "interacao",
+    "description": "Convença alguém a fazer uma pose de morto-vivo para uma foto"
+  },
+  {
+    "id": "Z013", "linhagem": "zumbi", "category": "interacao",
+    "description": "Encontre alguém usando a cor verde na fantasia"
+  },
+  {
+    "id": "Z014", "linhagem": "zumbi", "category": "interacao",
+    "description": "Consiga que outra pessoa imite um zumbi por pelo menos 5 segundos"
+  }
+]
