@@ -29,7 +29,7 @@ db.exec(`
   CREATE TABLE IF NOT EXISTS users (
     id          INTEGER PRIMARY KEY,
     nome        TEXT NOT NULL,
-    trilha_id   INTEGER REFERENCES trilha(id) ON DELETE CASCADE
+    numero      INTEGER NOT NULL
   );
 
   CREATE TABLE IF NOT EXISTS testamentos (

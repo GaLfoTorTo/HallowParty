@@ -46,7 +46,7 @@ if (fs.existsSync(missionsFile)) {
 //SEED USERS
 if (fs.existsSync(usersFile)) {
     const user = JSON.parse(fs.readFileSync(usersFile, 'utf-8'));
-    const insert = db.prepare('INSERT INTO users (id, nome, trilha_id) VALUES (@id, @nome, @trilha_id)');
+    const insert = db.prepare('INSERT INTO users (id, nome, numero) VALUES (@id, @nome, @numero)');
     const insertAll = db.transaction((rows) => rows.forEach((r) => insert.run(r)));
     insertAll(user);
 }

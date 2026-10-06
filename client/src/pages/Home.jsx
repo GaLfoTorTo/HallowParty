@@ -1,41 +1,17 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import brasao from '../assets/brasao.png';
+import { useNavigate } from 'react-router-dom';
 
-const LINHAGENS = [
-  {
-    key: 'fantasma',
-    emoji: '👻',
-    nome: 'Os Fantasmas',
-    desc: 'Espíritos do mistério. Investigam, buscam, decifram o que os vivos ignoram.',
-    color: 'text-[#3a5a70]',
-  },
-  {
-    key: 'vampiro',
-    emoji: '🧛',
-    nome: 'Os Vampiros',
-    desc: 'Senhores da sedução. Dominam os salões, os cálices e as alianças da noite.',
-    color: 'text-[#7a1a2a]',
-  },
-  {
-    key: 'zumbi',
-    emoji: '🧟',
-    nome: 'Os Zumbis',
-    desc: 'Filhos do caos. Onde pisam, a festa irrompe — e os ossos não param de dançar.',
-    color: 'text-[#3a5a1a]',
-  },
-];
-
-function Home() {
+const Home = () => {
   const [nome, setNome] = useState('');
+  const [stamped, setStamped] = useState(false);
+  const navigate = useNavigate();
+
+  function handleStamp() {
+    setStamped(true);
+    setTimeout(() => navigate('/trilha', { state: { nome } }), 600);
+  }
   return (
     <div className="flex items-center justify-center bg-page min-h-screen p-5 md:p-10">
-      {/* Luzes de velas */}
-      <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute left-10 top-10 w-40 h-40 bg-orange-700/10 blur-[90px]" />
-        <div className="absolute right-10 bottom-10 w-52 h-52 bg-red-900/10 blur-[110px]" />
-      </div>
-
       {/* Documento — pergaminho */}
       <main className="paper w-full max-w-4xl px-8! py-10! md:px-20! md:py-10! overflow-hidden fade">
 
@@ -50,7 +26,7 @@ function Home() {
           <header className="text-center">
             {/* Separador */}
             <div className="ornamental-line my-8">
-              <img src={brasao} className="w-10 h-10 img-parchment" alt="" />
+              <img src="/brasao.png" className="w-10 h-10" alt="" />
             </div>
           </header>
 
@@ -117,19 +93,41 @@ function Home() {
               </div>
               <p className="font-title text-[10px] tracking-[0.4em] mt-3 text-[#65421f]">ASSINATURA</p>
               <p className="font-old italic text-[#55381f]">Escrito e selado na véspera do pesar, quando a última testemunha ainda habitava este mundo.</p>
-              {/* Selo */}
-              <div className="mt-16 flex justify-center">
-                <div className="w-24 h-24 rounded-full border-4 border-[#6b2119]/70 flex items-center justify-center rotate-[-8deg] shadow-inner">
-                  <div className="w-16 h-16 rounded-full border border-[#6b2119]/60 flex items-center justify-center font-gothic text-3xl text-[#6b2119]">
-                    ✠
-                  </div>
-                </div>
+              {/* Selos */}
+              <div className="mt-16 flex justify-center items-center gap-10">
+                {/* Botão carimbo — só aparece quando o nome foi preenchido */}
+                {nome.trim() 
+                  ? (
+                      <button
+                        onClick={handleStamp}
+                        disabled={stamped}
+                        className={[
+                          'stamp-btn',
+                          stamped ? 'stamp-pressed' : '',
+                        ].join(' ')}
+                        title="Aceitar o destino"
+                      >
+                        <span className="stamp-inner">
+                          <span className="stamp-cross">☩</span>
+                          <span className="stamp-text">ACEITO</span>
+                          <span className="stamp-sub">meu destino</span>
+                        </span>
+                      </button>
+                    )
+                  : (
+                    <div className="w-24 h-24 rounded-full border-4 border-[#6b2119]/70 flex items-center justify-center rotate-[-8deg] shadow-inner">
+                      <div className="w-16 h-16 rounded-full border border-[#6b2119]/60 flex items-center justify-center font-gothic text-3xl text-[#6b2119]">
+                        ✠
+                      </div>
+                    </div>
+                    )
+                }
               </div>
             </div>
           </section>
           {/* Separador */}
           <div className="ornamental-line my-8!">
-            <img src={brasao} className="w-10 h-10 img-parchment" alt="" />
+            <img src="/brasao.png" className="w-10 h-10 img-parchment" alt="" />
           </div>
         </div>
       </main>
