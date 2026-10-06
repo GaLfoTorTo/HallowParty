@@ -28,7 +28,6 @@ const LINHAGENS = [
 
 function Home() {
   const [nome, setNome] = useState('');
-
   return (
     <div className="flex items-center justify-center bg-page min-h-screen p-5 md:p-10">
       {/* Luzes de velas */}
@@ -117,7 +116,6 @@ function Home() {
                 />
               </div>
               <p className="font-title text-[10px] tracking-[0.4em] mt-3 text-[#65421f]">ASSINATURA</p>
-              <p className="font-script text-5xl text-[#3d2415]">Padrinho amaldiçoado</p>
               <p className="font-old italic text-[#55381f]">Escrito e selado na véspera do pesar, quando a última testemunha ainda habitava este mundo.</p>
               {/* Selo */}
               <div className="mt-16 flex justify-center">

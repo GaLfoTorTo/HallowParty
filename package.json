@@ -1,7 +1,7 @@
 {
   "name": "hallowparty",
   "version": "1.0.0",
-  "description": "Mini site de validação de tarefas - Testamento Maldito",
+  "description": "Testamento Maldito - mini app de validação de tarefas",
   "private": true,
   "scripts": {
     "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
@@ -9,6 +9,8 @@
     "dev:client": "npm --prefix client run dev",
     "build": "npm --prefix client run build",
     "start": "node server/index.js",
+    "db:create": "node server/db/database.js",
+    "seed": "node server/db/seed.js",
     "install:all": "npm install && npm --prefix client install"
   },
   "dependencies": {

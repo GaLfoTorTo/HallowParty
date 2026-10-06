@@ -1,0 +1,352 @@
+[
+  {
+    "id": 1,
+    "titulo": "O Artefato Perdido",
+    "linhagem": "fantasma",
+    "categoria": "investigacao",
+    "descricao": "Encontre um objeto escondido em algum canto da decoração da festa"
+  },
+  {
+    "id": 2,
+    "titulo": "Símbolo da Morte",
+    "linhagem": "fantasma",
+    "categoria": "investigacao",
+    "descricao": "Localize um símbolo de caveira escondido na decoração"
+  },
+  {
+    "id": 3,
+    "titulo": "A Chave do Espectro",
+    "linhagem": "fantasma",
+    "categoria": "investigacao",
+    "descricao": "Descubra onde está a chave que o Fantasma escondeu"
+  },
+  {
+    "id": 4,
+    "titulo": "Mensagem do Além",
+    "linhagem": "fantasma",
+    "categoria": "investigacao",
+    "descricao": "Encontre a mensagem secreta escondida em algum lugar da festa"
+  },
+  {
+    "id": 5,
+    "titulo": "O Intruso Oculto",
+    "linhagem": "fantasma",
+    "categoria": "investigacao",
+    "descricao": "Identifique um objeto que não deveria estar naquele lugar da decoração"
+  },
+  {
+    "id": 6,
+    "titulo": "Inventário das Caveiras",
+    "linhagem": "fantasma",
+    "categoria": "observacao",
+    "descricao": "Descubra quantas caveiras existem no ambiente principal da festa"
+  },
+  {
+    "id": 7,
+    "titulo": "A Paleta do Horror",
+    "linhagem": "fantasma",
+    "categoria": "observacao",
+    "descricao": "Identifique qual a cor predominante na decoração do setor das bebidas"
+  },
+  {
+    "id": 8,
+    "titulo": "O Padrão Maldito",
+    "linhagem": "fantasma",
+    "categoria": "observacao",
+    "descricao": "Encontre um símbolo que se repete três ou mais vezes na decoração"
+  },
+  {
+    "id": 9,
+    "titulo": "O Segredo Deslocado",
+    "linhagem": "fantasma",
+    "categoria": "observacao",
+    "descricao": "Descubra qual objeto da decoração mudou de lugar durante a noite"
+  },
+  {
+    "id": 10,
+    "titulo": "A Bruxa Escondida",
+    "linhagem": "fantasma",
+    "categoria": "observacao",
+    "descricao": "Encontre a imagem específica de uma bruxa escondida na decoração"
+  },
+  {
+    "id": 11,
+    "titulo": "O Sangue que Não Mente",
+    "linhagem": "fantasma",
+    "categoria": "pessoas",
+    "descricao": "Encontre uma pessoa usando algum item vermelho na fantasia"
+  },
+  {
+    "id": 12,
+    "titulo": "A Moeda da Sorte",
+    "linhagem": "fantasma",
+    "categoria": "pessoas",
+    "descricao": "Descubra quem está com uma moeda temática escondida no bolso"
+  },
+  {
+    "id": 13,
+    "titulo": "O Veterano da Meia-Noite",
+    "linhagem": "fantasma",
+    "categoria": "pessoas",
+    "descricao": "Encontre alguém que tenha chegado na festa antes das 21h"
+  },
+  {
+    "id": 14,
+    "titulo": "O Nome do Guardião",
+    "linhagem": "fantasma",
+    "categoria": "pessoas",
+    "descricao": "Pergunte a três pessoas diferentes qual o nome do Guardião da Herança"
+  },
+  {
+    "id": 15,
+    "titulo": "Voz sem Corpo",
+    "linhagem": "fantasma",
+    "categoria": "enigmas",
+    "descricao": "Resolva a charada: 'Eu falo sem boca e ouço sem ouvido. O que sou eu?' (Resposta: eco)"
+  },
+  {
+    "id": 16,
+    "titulo": "Gosto de Sangue",
+    "linhagem": "vampiro",
+    "categoria": "bebidas",
+    "descricao": "Experimente o Gumy Vermelho — o drink exclusivo do Vampiro"
+  },
+  {
+    "id": 17,
+    "titulo": "Brinde Imortal",
+    "linhagem": "vampiro",
+    "categoria": "bebidas",
+    "descricao": "Faça um brinde com a bebida chamada 'Sangue do Vampiro'"
+  },
+  {
+    "id": 18,
+    "titulo": "A Poção Proibida",
+    "linhagem": "vampiro",
+    "categoria": "bebidas",
+    "descricao": "Descubra qual bebida da festa é chamada de 'A Poção'"
+  },
+  {
+    "id": 19,
+    "titulo": "O Cálice Escarlate",
+    "linhagem": "vampiro",
+    "categoria": "bebidas",
+    "descricao": "Encontre a bebida vermelha escondida entre as opções do bar"
+  },
+  {
+    "id": 20,
+    "titulo": "Tentação Carmesim",
+    "linhagem": "vampiro",
+    "categoria": "comidas",
+    "descricao": "Encontre e experimente o doce exclusivo do Vampiro"
+  },
+  {
+    "id": 21,
+    "titulo": "O Coração do Banquete",
+    "linhagem": "vampiro",
+    "categoria": "comidas",
+    "descricao": "Encontre o 'coração' do banquete — o prato principal da mesa"
+  },
+  {
+    "id": 22,
+    "titulo": "Pista de Sangue",
+    "linhagem": "vampiro",
+    "categoria": "comidas",
+    "descricao": "Descubra qual comida da festa está relacionada à pista do Vampiro"
+  },
+  {
+    "id": 23,
+    "titulo": "Novo Sangue",
+    "linhagem": "vampiro",
+    "categoria": "interacao",
+    "descricao": "Encontre alguém que você ainda não conhecia e descubra seu nome"
+  },
+  {
+    "id": 24,
+    "titulo": "Pela Eternidade",
+    "linhagem": "vampiro",
+    "categoria": "interacao",
+    "descricao": "Faça um brinde com outro convidado usando a frase 'Pela eternidade'"
+  },
+  {
+    "id": 25,
+    "titulo": "O Servo das Sombras",
+    "linhagem": "vampiro",
+    "categoria": "interacao",
+    "descricao": "Encontre o 'Servo do Vampiro' — alguém usando uma capa preta"
+  },
+  {
+    "id": 26,
+    "titulo": "Código da Noite",
+    "linhagem": "vampiro",
+    "categoria": "interacao",
+    "descricao": "Descubra a palavra-chave conversando com outro convidado da linhagem Vampiro"
+  },
+  {
+    "id": 27,
+    "titulo": "Presas à Mostra",
+    "linhagem": "vampiro",
+    "categoria": "social",
+    "descricao": "Tire uma foto temática com outro convidado mostrando as presas do Vampiro"
+  },
+  {
+    "id": 28,
+    "titulo": "A Aliança das Linhagens",
+    "linhagem": "vampiro",
+    "categoria": "social",
+    "descricao": "Reúna uma pessoa da linhagem Fantasma e uma da linhagem Zumbi numa foto"
+  },
+  {
+    "id": 29,
+    "titulo": "Juro de Servidão",
+    "linhagem": "vampiro",
+    "categoria": "social",
+    "descricao": "Consiga que outra pessoa diga 'Eu sirvo ao Vampiro' sem rir"
+  },
+  {
+    "id": 30,
+    "titulo": "A Marcha dos Mortos",
+    "linhagem": "zumbi",
+    "categoria": "desafios",
+    "descricao": "Caminhe como um zumbi por 30 segundos por um corredor da festa"
+  },
+  {
+    "id": 31,
+    "titulo": "Pose Mortal",
+    "linhagem": "zumbi",
+    "categoria": "desafios",
+    "descricao": "Faça uma pose de morto-vivo e tire uma foto como evidência"
+  },
+  {
+    "id": 32,
+    "titulo": "Gemido da Putrefação",
+    "linhagem": "zumbi",
+    "categoria": "desafios",
+    "descricao": "Imite um zumbi (gemidos e movimentos) durante 10 segundos na frente de alguém"
+  },
+  {
+    "id": 33,
+    "titulo": "Thriller dos Ossos",
+    "linhagem": "zumbi",
+    "categoria": "desafios",
+    "descricao": "Faça a pequena coreografia do Thriller com outro convidado"
+  },
+  {
+    "id": 34,
+    "titulo": "O Cérebro do Festim",
+    "linhagem": "zumbi",
+    "categoria": "comida",
+    "descricao": "Encontre e experimente o 'Cérebro' do banquete — o doce especial dos Zumbis"
+  },
+  {
+    "id": 35,
+    "titulo": "O Tesouro Podre",
+    "linhagem": "zumbi",
+    "categoria": "comida",
+    "descricao": "Encontre a comida escondida que o Zumbi deixou na festa"
+  },
+  {
+    "id": 36,
+    "titulo": "Cor da Gangrena",
+    "linhagem": "zumbi",
+    "categoria": "comida",
+    "descricao": "Identifique qual alimento da mesa temática tem a cor verde"
+  },
+  {
+    "id": 37,
+    "titulo": "Ressurreição pela Batida",
+    "linhagem": "zumbi",
+    "categoria": "musica",
+    "descricao": "Dance quando a música tema dos Zumbis tocar — mostre que você sobreviveu"
+  },
+  {
+    "id": 38,
+    "titulo": "Dança dos Condenados",
+    "linhagem": "zumbi",
+    "categoria": "musica",
+    "descricao": "Encontre alguém dançando e dance com essa pessoa por pelo menos 1 minuto"
+  },
+  {
+    "id": 39,
+    "titulo": "Coreografia da Horda",
+    "linhagem": "zumbi",
+    "categoria": "musica",
+    "descricao": "Reproduza a coreografia simples ensinada pelo DJ quando ele der o sinal"
+  },
+  {
+    "id": 40,
+    "titulo": "Cicatrizes da Horda",
+    "linhagem": "zumbi",
+    "categoria": "interacao",
+    "descricao": "Faça uma foto com outro Zumbi mostrando as 'feridas' de vocês"
+  },
+  {
+    "id": 41,
+    "titulo": "Convertendo os Vivos",
+    "linhagem": "zumbi",
+    "categoria": "interacao",
+    "descricao": "Convença alguém a fazer uma pose de morto-vivo para uma foto"
+  },
+  {
+    "id": 42,
+    "titulo": "Verde da Decomposição",
+    "linhagem": "zumbi",
+    "categoria": "interacao",
+    "descricao": "Encontre alguém usando a cor verde na fantasia"
+  },
+  {
+    "id": 43,
+    "titulo": "Propagando o Vírus",
+    "linhagem": "zumbi",
+    "categoria": "interacao",
+    "descricao": "Consiga que outra pessoa imite um zumbi por pelo menos 5 segundos"
+  },
+  {
+    "id": 44,
+    "titulo": "Rastro Invisível",
+    "linhagem": "fantasma",
+    "categoria": "investigacao",
+    "descricao": "Encontre três objetos de cores diferentes escondidos na decoração e anote as cores"
+  },
+  {
+    "id": 45,
+    "titulo": "O Sussurro Proibido",
+    "linhagem": "fantasma",
+    "categoria": "pessoas",
+    "descricao": "Descubra o nome completo de um convidado sem perguntar diretamente"
+  },
+  {
+    "id": 46,
+    "titulo": "Espelho da Alma",
+    "linhagem": "fantasma",
+    "categoria": "observacao",
+    "descricao": "Encontre um espelho decorativo na festa e tire uma selfie assustadora nele"
+  },
+  {
+    "id": 47,
+    "titulo": "Hipnose do Olhar",
+    "linhagem": "vampiro",
+    "categoria": "social",
+    "descricao": "Mantenha contato visual com outro convidado por 10 segundos sem sorrir"
+  },
+  {
+    "id": 48,
+    "titulo": "O Último Gole",
+    "linhagem": "vampiro",
+    "categoria": "bebidas",
+    "descricao": "Termine sua bebida de uma vez só diante de uma testemunha que possa confirmar"
+  },
+  {
+    "id": 49,
+    "titulo": "Infecção em Cadeia",
+    "linhagem": "zumbi",
+    "categoria": "interacao",
+    "descricao": "Convença três pessoas diferentes a fazer o gesto de zumbi em sequência"
+  },
+  {
+    "id": 50,
+    "titulo": "O Último a Cair",
+    "linhagem": "zumbi",
+    "categoria": "desafios",
+    "descricao": "Fique parado como uma estátua de morto-vivo por 20 segundos sem rir"
+  }
+]
