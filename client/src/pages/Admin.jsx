@@ -8,13 +8,15 @@ function Admin() {
   const [qty, setQty] = useState({ fantasma: 10, vampiro: 10, zumbi: 10 });
   const [message, setMessage] = useState('');
 
+  const LINHAGEM_ICON = { fantasma: '👻', vampiro: '🧛', zumbi: '🧟' };
+
+  //FUNÇÃO DE CARREGAMENTO DE TESTAMENTOS
   async function loadTestamentos() {
     const { data } = await api.getTestamentos();
     setTestamentos(data);
   }
 
-  useEffect(() => { loadTestamentos(); }, []);
-
+  //FUNÇÃO DE CRIAÇÃO DE TESTAMENTO
   async function handleCreate(e) {
     e.preventDefault();
     const { data, ok } = await api.createTestamento({ linhagem, hasCurse });
@@ -26,6 +28,7 @@ function Admin() {
     }
   }
 
+  //FUNÇÃO DE CRIAÇÃO DE LOTE DE TESTAMENTOS
   async function handleBatch(e) {
     e.preventDefault();
     const { data, ok } = await api.generateBatch({
@@ -39,6 +42,7 @@ function Admin() {
     }
   }
 
+  //FUNÇÃO DE APAGAR TODOS OS TESTAMENTOS
   async function handleClear() {
     if (!window.confirm('Apagar TODOS os testamentos?')) return;
     await api.clearTestamentos();
@@ -46,8 +50,7 @@ function Admin() {
     loadTestamentos();
   }
 
-  const LINHAGEM_ICON = { fantasma: '👻', vampiro: '🧛', zumbi: '🧟' };
-
+  useEffect(() => loadTestamentos(), []);
   return (
     <div className="container">
       <h1>🗂️ Painel Admin</h1>

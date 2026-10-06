@@ -1,52 +1,38 @@
-const fs = require('fs');
-const path = require('path');
-
-const FILE = path.join(__dirname, '../data/missions.json');
-
-function readAll() {
-  return JSON.parse(fs.readFileSync(FILE, 'utf-8'));
-}
-
-function save(missions) {
-  fs.writeFileSync(FILE, JSON.stringify(missions, null, 2));
-}
+const db = require('../db/database');
 
 function findAll() {
-  return readAll();
+  return db.prepare('SELECT * FROM missions').all();
 }
 
 function findById(id) {
-  return readAll().find(m => m.id === id) || null;
+  return db.prepare('SELECT * FROM missions WHERE id = ?').get(id) || null;
 }
 
 function findByLinhagem(linhagem) {
-  return readAll().filter(m => m.linhagem === linhagem.toLowerCase());
+  return db.prepare('SELECT * FROM missions WHERE linhagem = ?').all(linhagem.toLowerCase());
 }
 
 function create(data) {
-  const missions = readAll();
   const mission = { ...data, id: data.id || `M${Date.now()}` };
-  missions.push(mission);
-  save(missions);
+  db.prepare(
+    'INSERT INTO missions (id, linhagem, category, description) VALUES (@id, @linhagem, @category, @description)'
+  ).run(mission);
   return mission;
 }
 
 function update(id, data) {
-  const missions = readAll();
-  const idx = missions.findIndex(m => m.id === id);
-  if (idx === -1) return null;
-  missions[idx] = { ...missions[idx], ...data };
-  save(missions);
-  return missions[idx];
+  const existing = findById(id);
+  if (!existing) return null;
+  const updated = { ...existing, ...data, id };
+  db.prepare(
+    'UPDATE missions SET linhagem = @linhagem, category = @category, description = @description WHERE id = @id'
+  ).run(updated);
+  return updated;
 }
 
 function remove(id) {
-  const missions = readAll();
-  const idx = missions.findIndex(m => m.id === id);
-  if (idx === -1) return false;
-  missions.splice(idx, 1);
-  save(missions);
-  return true;
+  const result = db.prepare('DELETE FROM missions WHERE id = ?').run(id);
+  return result.changes > 0;
 }
 
 module.exports = { findAll, findById, findByLinhagem, create, update, remove };

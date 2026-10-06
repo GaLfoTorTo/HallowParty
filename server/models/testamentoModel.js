@@ -1,10 +1,6 @@
-const fs = require('fs');
-const path = require('path');
+const db = require('../db/database');
 const missionModel = require('./missionModel');
 
-const FILE = path.join(__dirname, '../data/testamentos.json');
-
-// Predefined passwords per lineage (from PDF page 20)
 const SENHAS_PREDEFINIDAS = {
   fantasma: ['739', '381', '625', '914', '472'],
   vampiro:  ['482', '157', '936', '521', '804'],
@@ -17,39 +13,42 @@ const MALDICOES = {
   zumbi:    'Quando ouvir a palavra "morto", deverá permanecer imóvel durante 5 segundos.',
 };
 
-function readAll() {
-  return JSON.parse(fs.readFileSync(FILE, 'utf-8'));
-}
-
-function save(testamentos) {
-  fs.writeFileSync(FILE, JSON.stringify(testamentos, null, 2));
+function _rowToTestamento(row) {
+  if (!row) return null;
+  const missions = db
+    .prepare('SELECT missionId, description, category, fragment FROM testamento_missions WHERE testamento_id = ?')
+    .all(row.id);
+  return {
+    ...row,
+    hasCurse: row.hasCurse === 1,
+    completed: row.completed === 1,
+    missions,
+  };
 }
 
 function findAll() {
-  return readAll();
+  return db.prepare('SELECT * FROM testamentos').all().map(_rowToTestamento);
 }
 
 function findById(id) {
-  return readAll().find(t => t.id === id) || null;
+  const row = db.prepare('SELECT * FROM testamentos WHERE id = ?').get(id);
+  return _rowToTestamento(row);
 }
 
 function findBySenha(senha) {
-  return readAll().find(t => t.senha === senha) || null;
+  const row = db.prepare('SELECT * FROM testamentos WHERE senha = ?').get(senha);
+  return _rowToTestamento(row);
 }
 
 function _pickMissions(linhagem) {
   const pool = missionModel.findByLinhagem(linhagem);
-  const shuffled = pool.sort(() => Math.random() - 0.5);
-  return shuffled.slice(0, 3);
+  return pool.sort(() => Math.random() - 0.5).slice(0, 3);
 }
 
 function _pickSenha(linhagem, usedSenhas) {
   const pool = SENHAS_PREDEFINIDAS[linhagem] || [];
-  const available = pool.filter(s => !usedSenhas.includes(s));
-  if (available.length > 0) {
-    return available[Math.floor(Math.random() * available.length)];
-  }
-  // Generate a random 3-digit code if pool is exhausted
+  const available = pool.filter((s) => !usedSenhas.includes(s));
+  if (available.length > 0) return available[Math.floor(Math.random() * available.length)];
   let senha;
   do {
     senha = String(Math.floor(Math.random() * 900) + 100);
@@ -58,15 +57,20 @@ function _pickSenha(linhagem, usedSenhas) {
 }
 
 function _nextId() {
-  const all = readAll();
-  if (all.length === 0) return '001';
-  const maxId = Math.max(...all.map(t => parseInt(t.id, 10)));
-  return String(maxId + 1).padStart(3, '0');
+  const row = db.prepare('SELECT MAX(CAST(id AS INTEGER)) as max FROM testamentos').get();
+  return String((row.max || 0) + 1).padStart(3, '0');
 }
 
+const _insertTestamento = db.prepare(
+  'INSERT INTO testamentos (id, linhagem, guestName, senha, hasCurse, curse, completed, completedAt) VALUES (@id, @linhagem, @guestName, @senha, @hasCurse, @curse, @completed, @completedAt)'
+);
+
+const _insertMission = db.prepare(
+  'INSERT INTO testamento_missions (testamento_id, missionId, description, category, fragment) VALUES (@testamento_id, @missionId, @description, @category, @fragment)'
+);
+
 function create({ linhagem, guestName = null, hasCurse = false }) {
-  const testamentos = readAll();
-  const usedSenhas = testamentos.map(t => t.senha);
+  const usedSenhas = db.prepare('SELECT senha FROM testamentos').all().map((r) => r.senha);
   const missions = _pickMissions(linhagem);
   const senha = _pickSenha(linhagem, usedSenhas);
 
@@ -74,66 +78,58 @@ function create({ linhagem, guestName = null, hasCurse = false }) {
     id: _nextId(),
     linhagem,
     guestName,
-    missions: missions.map((m, i) => ({
-      missionId: m.id,
-      description: m.description,
-      category: m.category,
-      fragment: parseInt(senha[i], 10),
-    })),
     senha,
-    hasCurse,
+    hasCurse: hasCurse ? 1 : 0,
     curse: hasCurse ? MALDICOES[linhagem] : null,
-    completed: false,
+    completed: 0,
     completedAt: null,
   };
 
-  testamentos.push(testamento);
-  save(testamentos);
-  return testamento;
+  const missionRows = missions.map((m, i) => ({
+    testamento_id: testamento.id,
+    missionId: m.id,
+    description: m.description,
+    category: m.category,
+    fragment: parseInt(senha[i], 10),
+  }));
+
+  db.transaction(() => {
+    _insertTestamento.run(testamento);
+    missionRows.forEach((mr) => _insertMission.run(mr));
+  })();
+
+  return _rowToTestamento(db.prepare('SELECT * FROM testamentos WHERE id = ?').get(testamento.id));
 }
 
 function generateBatch({ quantidades }) {
-  // quantidades: { fantasma: 40, vampiro: 40, zumbi: 40 }
   const created = [];
   for (const [linhagem, qty] of Object.entries(quantidades)) {
     for (let i = 0; i < qty; i++) {
-      const hasCurse = Math.random() < 0.3; // 30% chance of curse
-      created.push(create({ linhagem, hasCurse }));
+      created.push(create({ linhagem, hasCurse: Math.random() < 0.3 }));
     }
   }
   return created;
 }
 
 function markCompleted(id) {
-  const testamentos = readAll();
-  const idx = testamentos.findIndex(t => t.id === id);
-  if (idx === -1) return null;
-  testamentos[idx].completed = true;
-  testamentos[idx].completedAt = new Date().toISOString();
-  save(testamentos);
-  return testamentos[idx];
+  const completedAt = new Date().toISOString();
+  db.prepare('UPDATE testamentos SET completed = 1, completedAt = ? WHERE id = ?').run(completedAt, id);
+  return findById(id);
 }
 
 function assignGuest(id, guestName) {
-  const testamentos = readAll();
-  const idx = testamentos.findIndex(t => t.id === id);
-  if (idx === -1) return null;
-  testamentos[idx].guestName = guestName;
-  save(testamentos);
-  return testamentos[idx];
+  db.prepare('UPDATE testamentos SET guestName = ? WHERE id = ?').run(guestName, id);
+  return findById(id);
 }
 
 function remove(id) {
-  const testamentos = readAll();
-  const idx = testamentos.findIndex(t => t.id === id);
-  if (idx === -1) return false;
-  testamentos.splice(idx, 1);
-  save(testamentos);
-  return true;
+  const result = db.prepare('DELETE FROM testamentos WHERE id = ?').run(id);
+  return result.changes > 0;
 }
 
 function clearAll() {
-  save([]);
+  db.prepare('DELETE FROM testamento_missions').run();
+  db.prepare('DELETE FROM testamentos').run();
 }
 
 module.exports = {

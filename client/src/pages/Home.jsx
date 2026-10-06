@@ -1,41 +1,140 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import brasao from '../assets/brasao.png';
 
 const LINHAGENS = [
-  { key: 'fantasma', emoji: '👻', nome: 'Fantasma', desc: 'Mistério · Busca e Investigação' },
-  { key: 'vampiro',  emoji: '🧛', nome: 'Vampiro',  desc: 'Sangue · Socialização e Bebidas' },
-  { key: 'zumbi',   emoji: '🧟', nome: 'Zumbi',    desc: 'Caos · Dança e Diversão' },
+  {
+    key: 'fantasma',
+    emoji: '👻',
+    nome: 'Os Fantasmas',
+    desc: 'Espíritos do mistério. Investigam, buscam, decifram o que os vivos ignoram.',
+    color: 'text-[#3a5a70]',
+  },
+  {
+    key: 'vampiro',
+    emoji: '🧛',
+    nome: 'Os Vampiros',
+    desc: 'Senhores da sedução. Dominam os salões, os cálices e as alianças da noite.',
+    color: 'text-[#7a1a2a]',
+  },
+  {
+    key: 'zumbi',
+    emoji: '🧟',
+    nome: 'Os Zumbis',
+    desc: 'Filhos do caos. Onde pisam, a festa irrompe — e os ossos não param de dançar.',
+    color: 'text-[#3a5a1a]',
+  },
 ];
 
 function Home() {
+  const [nome, setNome] = useState('');
+
   return (
-    <div className="container">
-      <header className="hero">
-        <h1>🎃 O Testamento Maldito</h1>
-        <p className="tagline">Uma herança deixada pelos mortos. Três linhagens. Nove provas. Uma recompensa.</p>
-      </header>
+    <div className="flex items-center justify-center bg-page min-h-screen p-5 md:p-10">
+      {/* Luzes de velas */}
+      <div className="fixed inset-0 pointer-events-none">
+        <div className="absolute left-10 top-10 w-40 h-40 bg-orange-700/10 blur-[90px]" />
+        <div className="absolute right-10 bottom-10 w-52 h-52 bg-red-900/10 blur-[110px]" />
+      </div>
 
-      <section className="linhagens">
-        {LINHAGENS.map(l => (
-          <div key={l.key} className={`linhagem-card linhagem-${l.key}`}>
-            <span className="linhagem-emoji">{l.emoji}</span>
-            <h2>{l.nome}</h2>
-            <p>{l.desc}</p>
+      {/* Documento — pergaminho */}
+      <main className="paper w-full max-w-4xl px-8! py-10! md:px-20! md:py-10! overflow-hidden fade">
+
+        {/* Manchas de sangue */}
+        <div className="blood top-16 right-60" />
+        <div className="blood top-120 right-5 opacity-50" />
+        <div className="blood bottom-28 left-2 opacity-40" />
+
+        {/* Pergaminho */}
+        <div className="relative z-10">
+          {/* Cabeçalho */}
+          <header className="text-center">
+            {/* Separador */}
+            <div className="ornamental-line my-8">
+              <img src={brasao} className="w-10 h-10 img-parchment" alt="" />
+            </div>
+          </header>
+
+          {/* Corpo do testamento */}
+          <section className="flex flex-col gap-7 py-5! font-old text-(--text) text-xl text-justify!">
+
+            <p className="font-script text-4xl md:text-5xl">
+              Você foi escolhido!
+            </p>
+
+            <p>
+              Se estás lendo estas palavras, 
+              então já é tarde demais... aquilo que mais temi
+              infelizmente aconteceu.
+            </p>
+
+            <p>
+              Por gerações, este testamento permaneceu escondido entre paredes que ninguém ousaria procurar, 
+              protegido por uma promessa feita quando ainda acreditava-se que algumas coisas poderiam permanecer esquecidas. 
+              Mas ao que parece, certas heranças não podem ser recusadas. 
+              O tempo, impiedoso como sempre, trouxe consigo a hora de revelar aquilo que deveria dicar para sempre enterrado.
+            </p>
+
+            <p className="font-script text-4xl md:text-5xl text-center text-red-900 my-10">
+              O passado sempre encontra um caminho de volta e os mortos veem tudo.
+            </p>
+
+            <p>
+              Existe uma herança aqui —
+              real, tangível, aguardando. Mas ela não será simplesmente entregue de mão beijada. 
+              A fortuna pertencerá àqueles que provarem ser dignos de carregá-la.
+            </p>
+
+            <p>
+              Três linhagens foram convocadas a esta noite. Cada uma carrega em
+              seu sangue — ou na falta dele — uma natureza que não pode ser
+              escondida. Reconheçam a si mesmos:
+            </p>
+
+            <p>
+              Apenas a linhagem que cumprir seu destino antes das outras herdará
+              o que lhes é devido.
+            </p>
+
+            <p className="font-semibold text-center uppercase tracking-widest text-(--text) mt-6">
+              Deseja encarar o seu destino?
+            </p>
+            <h1 className="font-script text-center text-5xl md:text-7xl text-red-900 leading-none">
+              O Testamento Maldito
+            </h1>
+          </section>
+
+          {/* Assinatura do padrinho */}
+          <section className="mt-16!">
+            <div className="flex flex-col gap-4 text-center w-full">
+              <div className="flex justify-center mt-4 w-full">
+                <input
+                  type="text"
+                  value={nome}
+                  onChange={e => setNome(e.target.value)}
+                  maxLength={40}
+                  className="w-full bg-transparent border-b-2 border-[#6b4520]/60 text-center font-script text-5xl md:text-6xl text-[#3d2415] placeholder:text-[#9a7050]/40 outline-none pb-1 leading-tight caret-[#6b2119]"
+                />
+              </div>
+              <p className="font-title text-[10px] tracking-[0.4em] mt-3 text-[#65421f]">ASSINATURA</p>
+              <p className="font-script text-5xl text-[#3d2415]">Padrinho amaldiçoado</p>
+              <p className="font-old italic text-[#55381f]">Escrito e selado na véspera do pesar, quando a última testemunha ainda habitava este mundo.</p>
+              {/* Selo */}
+              <div className="mt-16 flex justify-center">
+                <div className="w-24 h-24 rounded-full border-4 border-[#6b2119]/70 flex items-center justify-center rotate-[-8deg] shadow-inner">
+                  <div className="w-16 h-16 rounded-full border border-[#6b2119]/60 flex items-center justify-center font-gothic text-3xl text-[#6b2119]">
+                    ✠
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          {/* Separador */}
+          <div className="ornamental-line my-8!">
+            <img src={brasao} className="w-10 h-10 img-parchment" alt="" />
           </div>
-        ))}
-      </section>
-
-      <section className="actions">
-        <Link to="/validar" className="btn-primary">
-          🔐 Reivindicar Herança
-        </Link>
-        <Link to="/guardiao" className="btn-secondary">
-          ⚰️ Painel do Guardião
-        </Link>
-      </section>
-
-      <blockquote className="quote">
-        "Os mortos deixaram uma herança. Você terá coragem de reivindicá-la?"
-      </blockquote>
+        </div>
+      </main>
     </div>
   );
 }
