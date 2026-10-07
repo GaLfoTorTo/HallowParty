@@ -1,0 +1,83 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Trilha {
+  id          Int          @id
+  nome        String
+  testamentos Testamento[]
+
+  @@map("trilha")
+}
+
+model Mission {
+  id           Int                 @id
+  titulo       String
+  descricao    String
+  categoria    String
+  testamentos  TestamentoMission[]
+  userMissions UserMission[]
+
+  @@map("missions")
+}
+
+model User {
+  id          Int              @id @default(autoincrement())
+  nome        String
+  numero      Int              @default(0)
+  testamentos UserTestamento[]
+  missions    UserMission[]
+
+  @@map("users")
+}
+
+model Testamento {
+  id           Int                 @id
+  titulo       String
+  trilha_id    Int
+  trilha       Trilha              @relation(fields: [trilha_id], references: [id], onDelete: Cascade)
+  senha        String
+  user_id      Int?
+  completed    Int                 @default(0)
+  completed_at DateTime?
+  missions     TestamentoMission[]
+  users        UserTestamento[]
+
+  @@map("testamentos")
+}
+
+model TestamentoMission {
+  id            Int        @id @default(autoincrement())
+  testamento_id Int
+  mission_id    Int
+  testamento    Testamento @relation(fields: [testamento_id], references: [id], onDelete: Cascade)
+  mission       Mission    @relation(fields: [mission_id], references: [id], onDelete: Cascade)
+
+  @@map("testamento_missions")
+}
+
+model UserTestamento {
+  id            Int        @id @default(autoincrement())
+  user_id       Int
+  testamento_id Int
+  user          User       @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  testamento    Testamento @relation(fields: [testamento_id], references: [id], onDelete: Cascade)
+
+  @@map("user_testamentos")
+}
+
+model UserMission {
+  id         Int     @id @default(autoincrement())
+  user_id    Int
+  mission_id Int
+  fragment   Int
+  user       User    @relation(fields: [user_id], references: [id], onDelete: Cascade)
+  mission    Mission @relation(fields: [mission_id], references: [id], onDelete: Cascade)
+
+  @@map("user_missions")
+}

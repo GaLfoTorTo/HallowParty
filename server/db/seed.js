@@ -43,18 +43,10 @@ if (fs.existsSync(missionsFile)) {
     insertAll(missions);
 }
 
-//SEED USERS
-if (fs.existsSync(usersFile)) {
-    const user = JSON.parse(fs.readFileSync(usersFile, 'utf-8'));
-    const insert = db.prepare('INSERT INTO users (id, nome, numero) VALUES (@id, @nome, @numero)');
-    const insertAll = db.transaction((rows) => rows.forEach((r) => insert.run(r)));
-    insertAll(user);
-}
-
 //SEED TESTAMENTOS
 if (fs.existsSync(testamentosFile)) {
     const testamentos = JSON.parse(fs.readFileSync(testamentosFile, 'utf-8'));
-    const insert = db.prepare('INSERT INTO testamentos (titulo, trilha_id, senha, user_id, completed, completed_at) VALUES (@titulo, @trilha_id, @senha, @user_id, @completed, @completed_at)');
+    const insert = db.prepare('INSERT INTO testamentos (id, titulo, trilha_id, senha, user_id, completed, completed_at) VALUES (@id, @titulo, @trilha_id, @senha, @user_id, @completed, @completed_at)');
     const insertAll = db.transaction((rows) => rows.forEach((r) => insert.run(r)));
     insertAll(testamentos);
 }

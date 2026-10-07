@@ -1,11 +1,30 @@
-const db = require('../db/database.js');
+const prisma = require('../db/prisma');
 
-const get = () => db.prepare('SELECT * FROM missions').all();
+const get = () => prisma.mission.findMany();
 
-const find = (id) => db.prepare('SELECT * FROM missions WHERE id = ?').get(id) || null;
+const find = (id) => prisma.mission.findUnique({ where: { id: Number(id) } });
 
-const getMissions = (user_id) => db.prepare('SELECT * FROM user_missions WHERE id = ?').get(user_id) || null;
+const getByUser = (userId) =>
+  prisma.mission.findMany({
+    where: { userMissions: { some: { user_id: Number(userId) } } },
+    include: {
+      userMissions: {
+        where: { user_id: Number(userId) },
+        select: { fragment: true },
+      },
+    },
+  });
 
-const completeMission = (user_id, id) => db.prepare('SELECT * FROM user_missions WHERE user_id = ? AND mission_id = ?').get(user_id, id) || null;
+const complete = async (userId, missionId) => {
+  const result = await prisma.userMission.updateMany({
+    where: {
+      user_id: Number(userId),
+      mission_id: Number(missionId),
+      fragment: 0,
+    },
+    data: { fragment: 1 },
+  });
+  return result.count > 0;
+};
 
-module.exports = { get, find, getMissions, completeMission};
+module.exports = { get, find, getByUser, complete };

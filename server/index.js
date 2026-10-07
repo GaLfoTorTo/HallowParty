@@ -7,6 +7,7 @@ const missionsRoutes    = require('./routes/missions');
 const testamentosRoutes = require('./routes/testamentos');
 const validateRoutes    = require('./routes/validate');
 const adminRoutes       = require('./routes/admin');
+const usersRoutes       = require('./routes/users');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -18,6 +19,7 @@ app.use('/api/missions',    missionsRoutes);
 app.use('/api/testamentos', testamentosRoutes);
 app.use('/api/validate',    validateRoutes);
 app.use('/api/admin',       adminRoutes);
+app.use('/api/users',       usersRoutes);
 
 // Serve React build in production
 if (process.env.NODE_ENV === 'production') {

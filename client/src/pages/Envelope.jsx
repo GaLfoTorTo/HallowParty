@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { getSession } from '../services/session';
+import '../css/envelope.css';
 
 const Envelope = () => {
   const [phase, setPhase] = useState('entering');
@@ -12,11 +14,16 @@ const Envelope = () => {
 
   const openEnvelope = () => {
     if (phase !== 'idle') return;
+
+    const session = getSession();
+    const hasSession = session?.user && session?.trilha && session?.testamento && session?.missions;
+    const destination = hasSession ? '/tasks' : '/home';
+
     setPhase('cracking');
     setTimeout(() => setPhase('opening'), 700);
     setTimeout(() => setPhase('rising'), 2100);
     setTimeout(() => setPhase('leaving'), 3600);
-    setTimeout(() => navigate('/home'), 4400);
+    setTimeout(() => navigate(destination), 4400);
   };
 
   const isOpen    = phase === 'opening' || phase === 'rising' || phase === 'leaving';

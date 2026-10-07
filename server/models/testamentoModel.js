@@ -1,17 +1,18 @@
-const db = require('../db/database');
-const missionModel = require('./missionModel');
+const prisma = require('../db/prisma');
 
-const get = () => db.prepare('SELECT * FROM testamentos').all();
+const get = () => prisma.testamento.findMany();
 
-const find = (id) => db.prepare('SELECT * FROM testamentos WHERE id = ?').get(id);
+const find = (id) => prisma.testamento.findUnique({ where: { id: Number(id) } });
 
-const complete = (id, userId) => {
-  db.prepare('UPDATE testamentos SET user_id = ? WHERE id = ?').run(userId, id);
-  return findById(id);
-};
+const complete = (id, userId) =>
+  prisma.testamento.update({
+    where: { id: Number(id) },
+    data: { user_id: userId, completed: 1, completed_at: new Date() },
+  });
 
-module.exports = {
-  get,
-  find,
-  complete,
-};
+const getByUser = (userId) =>
+  prisma.testamento.findFirst({
+    where: { users: { some: { user_id: Number(userId) } } },
+  });
+
+module.exports = { get, find, complete, getByUser };

@@ -1,0 +1,193 @@
+/* ── Envelope Intro ─────────────────────────── */
+
+/* Scene wrapper */
+.env-scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: radial-gradient(ellipse at center, #3b3022 0%, #211b15 55%, #100d0a 100%);
+  transition: opacity 0.8s ease;
+  overflow: hidden;
+}
+.env-scene--out { opacity: 0; }
+
+/* Stage — the area that holds the envelope + letter space above */
+.env-stage {
+  position: relative;
+  width: 560px;
+  height: 620px;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+}
+.env-stage--in { animation: appear 1s ease-out forwards; }
+
+/* ── Letter ──────────────────────────────────── */
+.env-letter {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 420px;
+  height: 270px;
+  transform: translateX(-50%) translateY(0);
+  transition: transform 1.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background:
+    radial-gradient(ellipse at 50% 20%, rgba(255,255,255,.14) 0%, transparent 60%),
+    linear-gradient(160deg, #f0e2cc, #e2c49a);
+  border: 1px solid rgba(196,160,106,.4);
+  box-shadow: 0 -6px 28px rgba(0,0,0,.55), inset 0 0 40px rgba(0,0,0,.04);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+/* Paper noise overlay on the letter */
+.env-letter::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: .12;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+}
+.env-letter--up {
+  transform: translateX(-50%) translateY(-340px);
+  z-index: 5;
+}
+.env-letter-content {
+  padding: 18px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Envelope body ───────────────────────────── */
+.env-body {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 360px;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.08) 0%, transparent 55%),
+    linear-gradient(180deg, #c49868 0%, #a87840 60%, #9a6e30 100%);
+  border: 1px solid rgba(122,90,42,.8);
+  box-shadow:
+    0 24px 64px rgba(0,0,0,.75),
+    0 8px 24px rgba(0,0,0,.45),
+    inset 0 1px 0 rgba(255,255,255,.12),
+    inset 0 -2px 4px rgba(0,0,0,.2);
+  z-index: 2;
+}
+/* Paper texture on envelope */
+.env-body::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: .18;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+}
+
+/* Diagonal fold lines on front face */
+.env-folds {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom right,
+      transparent calc(50% - 0.8px),
+      rgba(100,65,15,.28) calc(50%),
+      transparent calc(50% + 0.8px)),
+    linear-gradient(to bottom left,
+      transparent calc(50% - 0.8px),
+      rgba(100,65,15,.28) calc(50%),
+      transparent calc(50% + 0.8px));
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Flap (perspective container + rotating triangle) ── */
+.env-flap-persp {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 56%;
+  perspective: 700px;
+  perspective-origin: 50% 0%;
+  z-index: 3;
+}
+
+.env-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 128%;
+  background: linear-gradient(175deg, #d4b078 0%, #bc9448 55%, #a87c30 100%);
+  clip-path: polygon(0 0, 100% 0, 50% 78%);
+  transform-origin: 50% 0%;
+  transform: rotateX(0deg);
+  transition: transform 1.5s cubic-bezier(0.4, 0, 0.15, 1);
+  backface-visibility: hidden;
+  filter: drop-shadow(0 8px 18px rgba(0,0,0,.5));
+}
+.env-flap--open {
+  transform: rotateX(-178deg);
+}
+
+/* ── Wax seal ─────────────────────────────────── */
+.env-wax {
+  position: absolute;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 38% 32%, #9b1818, #4f0a0a 72%);
+  border: 2px solid #701818;
+  box-shadow:
+    0 0 0 2.5px rgba(196,117,58,.4),
+    0 5px 18px rgba(80,10,10,.75),
+    inset 0 1px 0 rgba(255,200,100,.12);
+  left: 50%;
+  top: 69%;
+  transform: translateX(-50%) translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  z-index: 1;
+}
+.env-wax-ring {
+  position: absolute;
+  inset: 5px;
+  border-radius: 50%;
+  border: 1px solid rgba(196,117,58,.3);
+}
+.env-wax--shake {
+  animation: wax-shake 0.6s ease-in-out;
+}
+.env-wax--gone {
+  opacity: 0;
+  transform: translateX(-50%) translateY(-50%) scale(0.55);
+}
+
+@keyframes wax-shake {
+  0%   { transform: translateX(-50%) translateY(-50%) rotate(0deg)   scale(1); }
+  18%  { transform: translateX(-50%) translateY(-50%) rotate(-10deg) scale(1.04); }
+  36%  { transform: translateX(-50%) translateY(-50%) rotate(8deg)   scale(0.97); }
+  54%  { transform: translateX(-50%) translateY(-50%) rotate(-7deg)  scale(1.03); }
+  72%  { transform: translateX(-50%) translateY(-50%) rotate(5deg)   scale(0.99); }
+  90%  { transform: translateX(-50%) translateY(-50%) rotate(-2deg)  scale(1.01); }
+  100% { transform: translateX(-50%) translateY(-50%) rotate(0deg)   scale(1); }
+}
+
+/* ── Responsive ──────────────────────────────── */
+@media (max-width: 600px) {
+  .env-stage { width: 340px; height: 400px; }
+  .env-body  { height: 230px; }
+  .env-letter { width: 260px; height: 180px; }
+  .env-letter--up { transform: translateX(-50%) translateY(-220px); }
+}

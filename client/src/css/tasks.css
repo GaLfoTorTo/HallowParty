@@ -1,0 +1,91 @@
+/* ── Card de trilha ──────────────────────────── */
+.testamento-card {
+  border: 1.5px solid var(--accent);
+  background:rgba(246, 211, 164, 0.5);
+  box-shadow:
+    0 4px 10px rgba(0,0,0,.18),
+    inset 0 1px 0 rgba(255,255,255,.12);
+  overflow: hidden;
+}
+
+/* ── Reset button ─────────── */
+.reset-btn {
+  width: auto;
+  height: auto;
+  padding: 5px 7px;
+  border-radius: 5px;
+  border: 4px solid #6b2119;
+  background: radial-gradient(ellipse at 40% 38%, #8b2a20, #4a1010 70%);
+  box-shadow: 0 0 0 2px #c4753a55, inset 0 0 12px rgba(0,0,0,.5), 0 4px 18px rgba(80,10,10,.5);
+  cursor: pointer;
+  animation: reset-appear .55s cubic-bezier(.22,.6,.36,1) both;
+}
+.reset-btn:hover:not(:disabled) {
+  filter: brightness(1.15);
+  box-shadow: 0 0 0 3px #c4753a88, inset 0 0 16px rgba(0,0,0,.4), 0 6px 24px rgba(110,15,15,.65);
+}
+.reset-btn:active:not(:disabled) {
+  transform: scale(.96);
+}
+.reset-btn .reset-inner {
+  border-radius: 2px;
+  flex-direction: row;
+  gap: .5rem;
+  padding: 0;
+  width: auto;
+  height: auto;
+}
+
+.reset-text {
+  font-family: var(--font-title);
+  font-size: .65rem;
+  letter-spacing: .10em;
+  color: #e8c08a;
+  font-weight: 700;
+}
+
+/* ── Modal de reset ──────────────────────────── */
+.reset-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 4, 2, 0.72);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  animation: fadeIn .2s ease both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.reset-modal {
+  background: #ebd5b9;
+  border: 2px solid #6b2119;
+  box-shadow: 0 0 0 1px #c4753a33, 0 8px 40px rgba(80, 10, 10, 0.7);
+  border-radius: 6px;
+  padding: 2.5rem 2rem;
+  max-width: 360px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  animation: modalIn .25s cubic-bezier(.22,.6,.36,1) both;
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(.9) translateY(12px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.reset-modal-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .75rem;
+  margin-top: .5rem;
+}

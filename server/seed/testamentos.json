@@ -5,7 +5,7 @@
         "trilha_id": 1,
         "senha": 777349,
         "user_id": null,
-        "completed": 1,
+        "completed": 0,
         "completed_at": null
     },
     {
@@ -14,7 +14,7 @@
         "trilha_id": 2,
         "senha": 123349,
         "user_id": null,
-        "completed": 1,
+        "completed": 0,
         "completed_at": null
     },
     {
@@ -23,7 +23,7 @@
         "trilha_id": 3,
         "senha": 236464,
         "user_id": null,
-        "completed": 1,
+        "completed": 0,
         "completed_at": null
     }
 ]

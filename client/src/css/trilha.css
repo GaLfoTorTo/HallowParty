@@ -1,0 +1,294 @@
+/* ── Grid de trilhas ─────────────────────────── */
+.trilha-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+@media (max-width: 700px) {
+  .trilha-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Card de trilha ──────────────────────────── */
+.trilha-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem 1rem 1.25rem;
+  border-radius: 4px;
+  border: 1.5px solid rgba(100, 65, 20, .35);
+  background:rgba(246, 211, 164, 0.5);
+  box-shadow:
+    0 4px 18px rgba(0,0,0,.18),
+    inset 0 1px 0 rgba(255,255,255,.12);
+  cursor: pointer;
+  outline: none;
+  overflow: hidden;
+  transition:
+    transform .22s cubic-bezier(.22,.6,.36,1),
+    box-shadow .22s ease,
+    border-color .22s ease;
+}
+
+/* Brilho colorido de fundo (hover) */
+.trilha-card__glow {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity .3s ease;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 30%, color-mix(in srgb, var(--accent) 18%, transparent) 0%, transparent 70%);
+}
+
+/* Hover */
+.trilha-card:hover {
+  transform: translateY(-5px) scale(1.015);
+  border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+  box-shadow:
+    0 10px 32px rgba(0,0,0,.28),
+    0 0 0 1px color-mix(in srgb, var(--accent) 30%, transparent),
+    inset 0 1px 0 rgba(255,255,255,.18);
+}
+.trilha-card:hover .trilha-card__glow { opacity: 1; }
+
+/* Focus (teclado) */
+.trilha-card:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--accent) 80%, #fff);
+  outline-offset: 3px;
+  transform: translateY(-3px) scale(1.01);
+}
+
+/* Active / click */
+.trilha-card:active {
+  transform: translateY(1px) scale(.985);
+  box-shadow: 0 3px 10px rgba(0,0,0,.22), inset 0 1px 6px rgba(0,0,0,.12);
+  transition-duration: .08s;
+}
+
+/* Selecionado */
+.trilha-card--selected {
+  border-color: var(--accent);
+  box-shadow:
+    0 0 0 2px var(--accent),
+    0 8px 28px rgba(0,0,0,.3),
+    inset 0 0 18px color-mix(in srgb, var(--accent) 12%, transparent);
+  transform: translateY(-4px) scale(1.02);
+}
+.trilha-card--selected .trilha-card__glow { opacity: 1; }
+
+/* Temas por trilha */
+.card-fantasma { --accent: var(--fantasma, #7b9fbf); }
+.card-vampiro  { --accent: var(--vampiro,  #cc2244); }
+.card-zumbi    { --accent: var(--zumbi,    #6a9944); }
+
+/* Imagem */
+.trilha-card__img-wrap {
+  width: 6.5rem;
+  height: 6.5rem;
+  margin-bottom: .75rem;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,.45));
+  transition: transform .3s cubic-bezier(.22,.6,.36,1), filter .3s ease;
+}
+.trilha-card:hover .trilha-card__img-wrap {
+  transform: scale(1.1) translateY(-3px);
+  filter: drop-shadow(0 8px 16px rgba(0,0,0,.55));
+}
+.trilha-card__img { width: 100%; height: 100%; object-fit: contain; }
+
+/* Corpo do card */
+.trilha-card__body { width: 100%; }
+
+.trilha-card__epiteto {
+  font-family: var(--font-title);
+  font-size: .65rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--accent) 80%, #7a5a30);
+  margin-bottom: .25rem;
+  opacity: .85;
+}
+
+.trilha-card__nome {
+  font-family: var(--font-script);
+  font-size: 2rem;
+  color: var(--accent);
+  line-height: 1.1;
+  text-shadow: 0 1px 6px rgba(0,0,0,.25);
+  margin-bottom: .5rem;
+}
+
+.trilha-card__divider {
+  width: 60%;
+  height: 1px;
+  margin: .55rem auto;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent) 50%, #704522), transparent);
+}
+
+.trilha-card__desc {
+  font-family: var(--font-old);
+  font-size: .82rem;
+  color: #3d2410;
+  line-height: 1.45;
+  margin-bottom: .4rem;
+}
+
+.trilha-card__lore {
+  font-family: var(--font-old);
+  font-size: .72rem;
+  font-style: italic;
+  color: #5a3a18;
+  opacity: .8;
+  line-height: 1.4;
+  margin-bottom: .5rem;
+}
+
+/* Habilidades */
+.trilha-card__habs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .3rem;
+  list-style: none;
+  margin-bottom: .5rem;
+}
+.trilha-card__hab {
+  font-family: var(--font-title);
+  font-size: .6rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: .2rem .55rem;
+  border-radius: 2px;
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  color: color-mix(in srgb, var(--accent) 90%, #3d2410);
+}
+
+/* Elemento */
+.trilha-card__elemento {
+  font-family: var(--font-old);
+  font-size: .7rem;
+  color: #5a3a18;
+  opacity: .75;
+}
+.trilha-card__elemento span {
+  font-weight: 700;
+  color: var(--accent);
+  opacity: 1;
+}
+
+/* Badge selecionado */
+.trilha-card__badge {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: .3rem;
+  font-family: var(--font-title);
+  font-size: .65rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  background: color-mix(in srgb, var(--accent) 22%, rgba(240,225,195,.9));
+  color: var(--accent);
+  border-top: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  animation: appear .35s ease-out forwards;
+}
+
+/* ── Botão carimbo ──────────────────────────── */
+@keyframes stamp-appear {
+  0%   { opacity: 0; transform: scale(2.2) rotate(12deg); filter: blur(4px); }
+  60%  { opacity: 1; transform: scale(.92) rotate(-6deg); filter: blur(0); }
+  80%  { transform: scale(1.06) rotate(-5deg); }
+  100% { transform: scale(1) rotate(-6deg); }
+}
+@keyframes stamp-press {
+  /* Pressiona */
+  0%   { transform: scale(1)    rotate(-6deg);
+         background: radial-gradient(ellipse at 40% 38%, #8b2a20, #4a1010 70%);
+         box-shadow: 0 0 0 2px #c4753a55, inset 0 0 12px rgba(0,0,0,.5), 0 4px 18px rgba(80,10,10,.5);
+         border-color: #6b2119; }
+  18%  { transform: scale(.74)  rotate(-6deg); filter: brightness(1.4); }
+  42%  { transform: scale(.74)  rotate(-6deg); filter: brightness(1.4); }
+  /* Sobe e vira impressão plana */
+  62%  { transform: scale(1.04) rotate(-6deg); filter: brightness(1);
+         background: radial-gradient(ellipse at 40% 38%, #8b2a20, #4a1010 70%);
+         box-shadow: 0 0 0 2px #c4753a55, inset 0 0 12px rgba(0,0,0,.5), 0 4px 18px rgba(80,10,10,.5); }
+  78%  { transform: scale(1.04) rotate(-6deg);
+         background: rgba(107, 33, 25, .13);
+         box-shadow: inset 0 0 5px rgba(107,33,25,.35), 0 0 0 1.5px rgba(107,33,25,.22);
+         border-color: rgba(107, 33, 25, .55); }
+  100% { transform: scale(1.04) rotate(-6deg);
+         background: rgba(107, 33, 25, .10);
+         box-shadow: inset 0 0 4px rgba(107,33,25,.28), 0 0 0 1.5px rgba(107,33,25,.18);
+         border-color: rgba(107, 33, 25, .48); }
+}
+
+.stamp-btn {
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+  border: 4px solid #6b2119;
+  background: radial-gradient(ellipse at 40% 38%, #8b2a20, #4a1010 70%);
+  box-shadow: 0 0 0 2px #c4753a55, inset 0 0 12px rgba(0,0,0,.5), 0 4px 18px rgba(80,10,10,.5);
+  cursor: pointer;
+  animation: stamp-appear .55s cubic-bezier(.22,.6,.36,1) both;
+  transform: rotate(-6deg);
+  transition: filter .15s;
+  position: relative;
+}
+.stamp-btn:hover:not(:disabled) {
+  filter: brightness(1.15);
+  box-shadow: 0 0 0 3px #c4753a88, inset 0 0 16px rgba(0,0,0,.4), 0 6px 24px rgba(110,15,15,.65);
+}
+.stamp-btn:active:not(:disabled) {
+  filter: brightness(.9);
+  transform: scale(.93) rotate(-6deg);
+}
+.stamp-btn.stamp-pressed {
+  animation: stamp-press .65s cubic-bezier(.4,0,.6,1) forwards;
+  pointer-events: none;
+}
+
+/* Conteúdo interno vira impressão de tinta */
+.stamp-btn.stamp-pressed .stamp-inner {
+  border-color: rgba(107, 33, 25, .4);
+  transition: border-color .2s .5s;
+}
+.stamp-btn.stamp-pressed .stamp-cross,
+.stamp-btn.stamp-pressed .stamp-text,
+.stamp-btn.stamp-pressed .stamp-sub {
+  color: rgba(107, 33, 25, .7);
+  transition: color .2s .5s;
+}
+
+.stamp-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  gap: 1px;
+  border-radius: 50%;
+  border: 1.5px solid #c4753a55;
+}
+.stamp-cross {
+  font-family: var(--font-gothic);
+  font-size: 1.4rem;
+  color: #e8c08a;
+  line-height: 1;
+}
+.stamp-text {
+  font-family: var(--font-title);
+  font-size: .65rem;
+  letter-spacing: .22em;
+  color: #e8c08a;
+  font-weight: 700;
+}
+.stamp-sub {
+  font-family: var(--font-old);
+  font-size: .5rem;
+  letter-spacing: .12em;
+  color: #c4956a;
+  font-style: italic;
+}

@@ -27,6 +27,9 @@ export const api = {
   validate: (body) => request('/validate', { method: 'POST', body }),
   checkSenha: (body) => request('/validate/check', { method: 'POST', body }),
 
+  // Users
+  resetUser: (id) => request(`/users/${id}`, { method: 'DELETE' }),
+
   // Admin
   getStats: () => request('/admin/stats'),
 };

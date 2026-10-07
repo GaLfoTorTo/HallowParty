@@ -8,7 +8,7 @@ const Home = () => {
 
   function handleStamp() {
     setStamped(true);
-    setTimeout(() => navigate('/trilha', { state: { nome } }), 600);
+    setTimeout(() => navigate('/trilha', { state: { nome } }), 2600);
   }
   return (
     <div className="flex items-center justify-center bg-page min-h-screen p-5 md:p-10">
