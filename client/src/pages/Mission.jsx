@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { getSession, updateSessionMissions } from '../services/session';
+import LoadingOverlay from '../components/LoadingOverlay';
 
 const STAMP_DELAY = 2600;
 
@@ -11,7 +12,8 @@ function Mission() {
   const user = session?.user;
   const mission = state?.mission ?? null;
 
-  const [fragmento, setFragmento] = useState('');
+  const editing = !!mission?.completed;
+  const [fragmento, setFragmento] = useState(mission?.fragment ?? '');
   const [loading, setLoading] = useState(false);
   const [stamped, setStamped] = useState(false);
   const [erro, setErro] = useState('');
@@ -57,6 +59,8 @@ function Mission() {
   }
 
   return (
+    <>
+    <LoadingOverlay visible={loading} message="Registrando sua missão..." />
     <div className="flex items-center justify-center bg-page min-h-screen p-5 md:p-10">
       <main className="paper w-full max-w-4xl px-8! py-10! md:px-20! md:py-10! overflow-hidden fade">
 
@@ -77,7 +81,7 @@ function Mission() {
             </h1>
 
             <div className="flex justify-between">
-              <p className="font-script text-4xl md:text-5xl">Concluir Missão</p>
+              <p className="font-script text-4xl md:text-5xl">{editing ? 'Editar Fragmento' : 'Concluir Missão'}</p>
               <button
                 type="button"
                 onClick={() => navigate('/tasks')}
@@ -94,7 +98,7 @@ function Mission() {
               )}
             </div>
 
-            <p className="text-center">Insira o fragmento coletado conluir que a missão.</p>
+            <p className="text-center">{editing ? 'Corrija o fragmento e confirme novamente.' : 'Insira o fragmento coletado para concluir a missão.'}</p>
           </section>
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-10 mt-10!">
@@ -130,6 +134,7 @@ function Mission() {
         </div>
       </main>
     </div>
+    </>
   );
 }
 

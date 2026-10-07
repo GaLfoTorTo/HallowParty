@@ -5,6 +5,7 @@ import Trail from './pages/Trail';
 import Tasks from './pages/Tasks';
 import Mission from './pages/Mission';
 import Reward from './pages/Reward';
+import Congrats from './pages/Congrats';
 import Guardian from './pages/Guardian';
 import Admin from './pages/Admin';
 
@@ -17,6 +18,7 @@ function App() {
       <Route path="/tasks" element={<Tasks />} />
       <Route path="/mission" element={<Mission />} />
       <Route path="/reward" element={<Reward />} />
+      <Route path="/congrats" element={<Congrats />} />
       <Route path="/guardiao" element={<Guardian />} />
       <Route path="/admin" element={<Admin />} />
     </Routes>

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getSession, clearSession } from '../services/session';
 import { api } from '../services/api';
+import LoadingOverlay from '../components/LoadingOverlay';
 import '../css/tasks.css';
 
 const trilhas = [
@@ -90,13 +91,14 @@ function Tasks() {
     }
   }
 
-  //FUNÇÃO DE NAVEGAÇÃO PARA MISSÃO 
+  //FUNÇÃO DE NAVEGAÇÃO PARA MISSÃO
   function handleMissionClick(mission) {
-    if (mission.completed) return;
     navigate('/mission', { state: { mission } });
   }
 
   return (
+    <>
+    <LoadingOverlay visible={resetting} message="Libertando sua alma..." />
     <div className="flex items-center justify-center bg-page min-h-screen p-5 md:p-10">
       <main className="paper w-full max-w-4xl px-8! py-10! md:px-20! md:py-10! overflow-hidden fade">
 
@@ -190,13 +192,13 @@ function Tasks() {
                         {items.map((m) => (
                           <li key={m.id}>
                             <div
-                              role={m.completed ? undefined : 'button'}
-                              tabIndex={m.completed ? undefined : 0}
+                              role="button"
+                              tabIndex={0}
                               onClick={() => handleMissionClick(m)}
                               onKeyDown={(e) => e.key === 'Enter' && handleMissionClick(m)}
                               className="flex items-start gap-3 border-t border-amber-900/30 pt-3!"
-                              style={{ cursor: m.completed ? 'default' : 'pointer' }}
-                              aria-label={m.completed ? undefined : `Completar missão: ${m.titulo}`}
+                              style={{ cursor: 'pointer' }}
+                              aria-label={m.completed ? `Editar fragmento: ${m.titulo}` : `Completar missão: ${m.titulo}`}
                             >
                               <span
                                 className="mt-1 shrink-0 w-5 h-5 rounded border-2 flex items-center justify-center"
@@ -215,13 +217,13 @@ function Tasks() {
                                 <span className={`font-old text-2xl leading-snug ${m.completed ? 'text-amber-700 line-through' : 'text-amber-950'}`}>{m.titulo}</span>
                                 <p className={`font-old text-sm uppercase mb-2 pb-1`} style={{ color: trilha.accentHex }}>{m.categoria}</p>
                                 <span className={`font-old text-sm mt-0.5 leading-snug ${m.completed ? 'opacity-30' : ''}`}>{m.descricao}</span>
-                                {m.completed && m.fragment && (
-                                  <span className="font-old text-xs uppercase tracking-widest mt-2 text-amber-700 opacity-60">
-                                    fragmento coletado:{' '}
-                                    <span className="font-script text-xl normal-case tracking-normal opacity-100 text-amber-950">{m.fragment}</span>
-                                  </span>
-                                )}
                               </div>
+                              {m.completed && m.fragment && (
+                                <span className="font-old text-xs uppercase tracking-widest mt-2 text-amber-700">
+                                  fragmento:{' '}
+                                  <span className="font-script font-semibold text-2xl opacity-100 text-amber-950">{m.fragment}</span>
+                                </span>
+                              )}
                             </div>
                           </li>
                         ))}
@@ -229,6 +231,14 @@ function Tasks() {
                     </div>
                   ))}
                 </div>
+              )}
+              {/* Botão de recompensa quando todas as missões estão concluídas */}
+              {done === total && total > 0 && (
+                <button onClick={() => navigate('/reward')} className="reset-btn reward-btn mt-4!">
+                  <span className="reset-inner">
+                    <span className="reset-text">☠ Reivindicar Recompensa ☠</span>
+                  </span>
+                </button>
               )}
             </div>
           </section>
@@ -264,6 +274,7 @@ function Tasks() {
         </div>
       )}
     </div>
+    </>
   );
 }
 

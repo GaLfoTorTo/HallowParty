@@ -119,6 +119,55 @@ body {
 .ornamental-line::after { background: linear-gradient(90deg, #704522, transparent); }
 
 
+/* ── Loading Overlay ────────────────────────── */
+@keyframes cross-pulse {
+  0%, 100% { opacity: .5; transform: scale(1) rotate(-6deg); }
+  50%       { opacity: 1;  transform: scale(1.12) rotate(-6deg); }
+}
+@keyframes overlay-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 7, 4, .72);
+  backdrop-filter: blur(4px);
+  animation: overlay-in .25s ease forwards;
+}
+.loading-overlay__box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 2.5rem 3rem;
+  background:
+    linear-gradient(rgba(216,193,143,.08), rgba(216,193,143,.08)),
+    url('/bg.jpg') center / cover no-repeat;
+  border: 1px solid rgba(112, 69, 34, .45);
+  border-radius: .5rem;
+  box-shadow: 0 0 40px rgba(72,8,5,.5), inset 0 0 30px rgba(0,0,0,.3);
+}
+.loading-overlay__icon {
+  font-size: 3rem;
+  color: #8b1a1a;
+  animation: cross-pulse 1.8s ease-in-out infinite;
+  display: block;
+  line-height: 1;
+}
+.loading-overlay__msg {
+  font-family: var(--font-old), Georgia, serif;
+  font-size: 1rem;
+  color: #c4a87a;
+  letter-spacing: .08em;
+  text-align: center;
+}
+
 /* Quote */
 .quote {
   border-left: 3px solid var(--orange);

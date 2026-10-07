@@ -44,6 +44,19 @@
   font-weight: 700;
 }
 
+/* ── Reward button ─────────── */
+.reward-btn {
+  width: 100%;
+  padding: 10px 14px;
+}
+.reward-btn .reset-inner {
+  justify-content: center;
+}
+.reward-btn .reset-text {
+  font-size: .85rem;
+  letter-spacing: .15em;
+}
+
 /* ── Modal de reset ──────────────────────────── */
 .reset-modal-overlay {
   position: fixed;

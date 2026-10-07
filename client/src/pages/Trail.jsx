@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { registerSession } from '../services/session';
+import LoadingOverlay from '../components/LoadingOverlay';
 import '../css/trail.css';
 
 const trilhas = [
@@ -115,6 +116,8 @@ const Trail = () => {
   }
 
   return (
+    <>
+    <LoadingOverlay visible={loading} message="Selando seu destino..." />
     <div className="flex items-center justify-center bg-page min-h-screen p-5 md:p-10">
       <main className="paper w-full max-w-5xl px-8! py-10! md:px-20! md:py-10! overflow-hidden fade">
 
@@ -184,6 +187,7 @@ const Trail = () => {
         </div>
       </main>
     </div>
+    </>
   );
 };
 
