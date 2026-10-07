@@ -15,14 +15,14 @@ const getByUser = (userId) =>
     },
   });
 
-const complete = async (userId, missionId) => {
+const complete = async (userId, missionId, fragmentText) => {
   const result = await prisma.userMission.updateMany({
     where: {
       user_id: Number(userId),
       mission_id: Number(missionId),
-      fragment: 0,
+      fragment: null,
     },
-    data: { fragment: 1 },
+    data: { fragment: fragmentText ?? '' },
   });
   return result.count > 0;
 };

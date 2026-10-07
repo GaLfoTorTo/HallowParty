@@ -7,7 +7,8 @@ const TRILHA_IDS = { vampiro: 1, fantasma: 2, zumbi: 3 };
 const normalizeMissions = (missions) =>
   missions.map(({ userMissions, ...m }) => ({
     ...m,
-    completed: (userMissions?.[0]?.fragment ?? 0) !== 0,
+    completed: userMissions?.[0]?.fragment != null,
+    fragment: userMissions?.[0]?.fragment ?? null,
   }));
 
 // POST /api/users
@@ -33,7 +34,11 @@ async function create(req, res) {
 
     return res.status(201).json({ user, testamento, missions: normalizeMissions(rawMissions) });
   } catch (err) {
-    return res.status(409).json({ message: err.message });
+    const known = err.message?.includes('testamento disponível');
+    const message = known
+      ? 'Todos os testamentos desta trilha já foram reivindicados. Escolha outra trilha.'
+      : 'Não foi possível registrar sua trilha. Tente novamente.';
+    return res.status(409).json({ message });
   }
 }
 

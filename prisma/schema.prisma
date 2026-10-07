@@ -75,7 +75,7 @@ model UserMission {
   id         Int     @id @default(autoincrement())
   user_id    Int
   mission_id Int
-  fragment   Int
+  fragment   String?
   user       User    @relation(fields: [user_id], references: [id], onDelete: Cascade)
   mission    Mission @relation(fields: [mission_id], references: [id], onDelete: Cascade)
 

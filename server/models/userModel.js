@@ -29,7 +29,9 @@ const create = async (nome, trilha_id) => {
         create: { testamento_id: testamento.id },
       },
       missions: {
-        create: missionIds.map((mission_id) => ({ mission_id, fragment: 0 })),
+        create: missionIds.map((mission_id) => ({
+          mission: { connect: { id: mission_id } },
+        })),
       },
     },
   });

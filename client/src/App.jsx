@@ -1,9 +1,10 @@
 import { Routes, Route } from 'react-router-dom';
 import Envelope from './pages/Envelope';
 import Home from './pages/Home';
-import Trilha from './pages/Trilha';
+import Trail from './pages/Trail';
 import Tasks from './pages/Tasks';
-import Validate from './pages/Validate';
+import Mission from './pages/Mission';
+import Reward from './pages/Reward';
 import Guardian from './pages/Guardian';
 import Admin from './pages/Admin';
 
@@ -12,9 +13,10 @@ function App() {
     <Routes>
       <Route path="/" element={<Envelope />} />
       <Route path="/home" element={<Home />} />
-      <Route path="/trilha" element={<Trilha />} />
+      <Route path="/trail" element={<Trail />} />
       <Route path="/tasks" element={<Tasks />} />
-      <Route path="/validar" element={<Validate />} />
+      <Route path="/mission" element={<Mission />} />
+      <Route path="/reward" element={<Reward />} />
       <Route path="/guardiao" element={<Guardian />} />
       <Route path="/admin" element={<Admin />} />
     </Routes>

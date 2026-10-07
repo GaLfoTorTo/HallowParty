@@ -89,3 +89,7 @@
   gap: .75rem;
   margin-top: .5rem;
 }
+
+.reset-btn .reset-inner {
+  display: flex;
+}

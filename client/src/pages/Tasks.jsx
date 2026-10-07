@@ -78,6 +78,7 @@ function Tasks() {
     return acc;
   }, {});
 
+  //FUNÇÃO DE RESET
   async function confirmReset() {
     setShowResetModal(false);
     setResetting(true);
@@ -89,9 +90,10 @@ function Tasks() {
     }
   }
 
+  //FUNÇÃO DE NAVEGAÇÃO PARA MISSÃO 
   function handleMissionClick(mission) {
     if (mission.completed) return;
-    navigate('/validar', { state: { mission } });
+    navigate('/mission', { state: { mission } });
   }
 
   return (
@@ -138,7 +140,7 @@ function Tasks() {
                 <button
                   onClick={() => setShowResetModal(true)}
                   disabled={resetting}
-                  className="reset-btn reset-btn--rect"
+                  className="reset-btn"
                 >
                   <span className="reset-inner">
                     <span className="reset-text">Reiniciar</span>
@@ -184,9 +186,6 @@ function Tasks() {
                 <div className="flex flex-col gap-6">
                   {Object.entries(byCategoria).map(([cat, items]) => (
                     <div key={cat}>
-                      <p className="font-old text-sm uppercase tracking-widest text-amber-800 mb-2 border-b border-amber-900/30 pb-1">
-                        {CATEGORIA_LABEL[cat] ?? cat}
-                      </p>
                       <ul className="flex flex-col gap-2">
                         {items.map((m) => (
                           <li key={m.id}>
@@ -195,13 +194,12 @@ function Tasks() {
                               tabIndex={m.completed ? undefined : 0}
                               onClick={() => handleMissionClick(m)}
                               onKeyDown={(e) => e.key === 'Enter' && handleMissionClick(m)}
-                              className="flex items-start gap-3"
+                              className="flex items-start gap-3 border-t border-amber-900/30 pt-3!"
                               style={{ cursor: m.completed ? 'default' : 'pointer' }}
                               aria-label={m.completed ? undefined : `Completar missão: ${m.titulo}`}
                             >
-                              {/* Indicador de estado */}
                               <span
-                                className="mt-1 flex-shrink-0 w-5 h-5 rounded border-2 flex items-center justify-center"
+                                className="mt-1 shrink-0 w-5 h-5 rounded border-2 flex items-center justify-center"
                                 style={{
                                   borderColor: m.completed ? (trilha?.cor ?? '#704522') : '#704522aa',
                                   background: m.completed ? (trilha?.cor ?? '#704522') : 'transparent',
@@ -213,31 +211,14 @@ function Tasks() {
                                   </svg>
                                 )}
                               </span>
-
-                              <div className="flex flex-col">
-                                <span
-                                  className="font-old text-lg leading-snug"
-                                  style={{
-                                    color: m.completed ? '#70452288' : 'var(--text, #392514)',
-                                    textDecoration: m.completed ? 'line-through' : 'none',
-                                  }}
-                                >
-                                  {m.titulo}
-                                  {!m.completed && (
-                                    <span
-                                      className="ml-2 font-old text-xs uppercase tracking-widest opacity-50"
-                                      style={{ color: trilha?.cor ?? '#704522' }}
-                                    >
-                                      → validar
-                                    </span>
-                                  )}
-                                </span>
-                                {m.descricao && (
-                                  <span
-                                    className="font-old text-sm mt-0.5 leading-snug"
-                                    style={{ opacity: m.completed ? 0.4 : 0.65 }}
-                                  >
-                                    {m.descricao}
+                              <div className="flex flex-col flex-1">
+                                <span className={`font-old text-2xl leading-snug ${m.completed ? 'text-amber-700 line-through' : 'text-amber-950'}`}>{m.titulo}</span>
+                                <p className={`font-old text-sm uppercase mb-2 pb-1`} style={{ color: trilha.accentHex }}>{m.categoria}</p>
+                                <span className={`font-old text-sm mt-0.5 leading-snug ${m.completed ? 'opacity-30' : ''}`}>{m.descricao}</span>
+                                {m.completed && m.fragment && (
+                                  <span className="font-old text-xs uppercase tracking-widest mt-2 text-amber-700 opacity-60">
+                                    fragmento coletado:{' '}
+                                    <span className="font-script text-xl normal-case tracking-normal opacity-100 text-amber-950">{m.fragment}</span>
                                   </span>
                                 )}
                               </div>
@@ -260,18 +241,22 @@ function Tasks() {
       {showResetModal && (
         <div className="reset-modal-overlay" onClick={() => setShowResetModal(false)}>
           <div className="reset-modal" onClick={e => e.stopPropagation()}>
-            <div className="text-5xl text-red-900">☠</div>
-            <h2 className="font-script text-5xl text-red-950">Reiniciar Trilha</h2>
-            <p className="text-center">
-              Seu progresso, missões e testamento serão liberados e você poderá escolher uma nova trilha.
+            <div className="text-5xl opacity-65 text-red-900">☠</div>
+            <h2 className="font-script text-4xl text-red-950 text-center leading-tight">Reiniciar Trilha</h2>
+            <p className="font-old text-sm text-center text-(--text) opacity-80 leading-relaxed">
+              Seu progresso, missões e testamento serão liberados.<br />
+              Você poderá escolher uma nova trilha.
             </p>
             <div className="reset-modal-actions">
-              <button className="reset-btn reset-btn--rect" onClick={confirmReset}>
+              <button className="reset-btn" onClick={confirmReset} disabled={resetting}>
                 <span className="reset-inner">
-                  <span className="reset-text">CONFIRMAR</span>
+                  <span className="reset-text">{resetting ? 'AGUARDE' : 'CONFIRMAR'}</span>
                 </span>
               </button>
-              <button className="text-amber-800 cursor-pointer" onClick={() => setShowResetModal(false)}>
+              <button
+                onClick={() => setShowResetModal(false)}
+                className="font-old text-xs tracking-widest text-(--text) opacity-50 hover:opacity-80 transition-opacity underline underline-offset-2 cursor-pointer bg-transparent border-none"
+              >
                 cancelar
               </button>
             </div>

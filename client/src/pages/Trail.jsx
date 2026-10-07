@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { registerSession } from '../services/session';
-import '../css/trilha.css';
+import '../css/trail.css';
 
 const trilhas = [
   {
@@ -85,7 +85,7 @@ const TrilhaCard = ({ item, selected, onSelect }) => {
   );
 };
 
-const Trilha = () => {
+const Trail = () => {
   const [trilha, setTrilha] = useState('');
   const [loading, setLoading] = useState(false);
   const [stamped, setStamped] = useState(false);
@@ -187,4 +187,4 @@ const Trilha = () => {
   );
 };
 
-export default Trilha;
+export default Trail;
