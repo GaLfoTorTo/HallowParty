@@ -19,8 +19,7 @@ export const api = {
   getTestamentos: () => request('/testamentos'),
   getTestamento: (id) => request(`/testamentos/${id}`),
   createTestamento: (body) => request('/testamentos', { method: 'POST', body }),
-  generateBatch: (quantidades) =>
-    request('/testamentos/batch/generate', { method: 'POST', body: { quantidades } }),
+  generateBatch: (quantidades) => request('/testamentos/batch/generate', { method: 'POST', body: { quantidades } }),
   clearTestamentos: () => request('/testamentos/batch/all', { method: 'DELETE' }),
 
   // Validate
@@ -32,4 +31,5 @@ export const api = {
 
   // Admin
   getStats: () => request('/admin/stats'),
+  resetDb: () => request('/admin/reset', { method: 'POST' }),
 };
