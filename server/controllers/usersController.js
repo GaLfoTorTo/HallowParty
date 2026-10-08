@@ -34,11 +34,15 @@ async function create(req, res) {
 
     return res.status(201).json({ user, testamento, missions: normalizeMissions(rawMissions) });
   } catch (err) {
+    console.error('[POST /api/users] erro ao criar usuário:', err);
     const known = err.message?.includes('testamento disponível');
     const message = known
       ? 'Todos os testamentos desta trilha já foram reivindicados. Escolha outra trilha.'
       : 'Não foi possível registrar sua trilha. Tente novamente.';
-    return res.status(409).json({ message });
+    return res.status(409).json({
+      message,
+      debug: process.env.NODE_ENV !== 'production' ? err.message : undefined,
+    });
   }
 }
 
