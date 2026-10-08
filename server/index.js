@@ -23,8 +23,8 @@ app.use('/api/users',       usersRoutes);
 
 // Serve React build in production
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/dist')));
-  app.get('*', (req, res) => res.sendFile(path.join(__dirname, '../client/dist/index.html')));
+  app.use(express.static(path.join(__dirname, '../dist')));
+  app.get('*', (req, res) => res.sendFile(path.join(__dirname, '../dist/index.html')));
 }
 
 if (require.main === module) {
