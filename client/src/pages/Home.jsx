@@ -1,10 +1,38 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+const EVENT_DATE = new Date('2026-10-31T17:00:00');
+const BYPASS_KEY = 'halloween2026';
+
+function getTimeLeft() {
+  const diff = EVENT_DATE - new Date();
+  if (diff <= 0) return null;
+  return {
+    days:    Math.floor(diff / (1000 * 60 * 60 * 24)),
+    hours:   Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+    minutes: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
+    seconds: Math.floor((diff % (1000 * 60)) / 1000),
+  };
+}
 
 const Home = () => {
   const [nome, setNome] = useState('');
   const [stamped, setStamped] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(getTimeLeft);
   const navigate = useNavigate();
+
+  const bypass = new URLSearchParams(window.location.search).get('pass') === BYPASS_KEY;
+  const isOpen = bypass || !timeLeft;
+
+  useEffect(() => {
+    if (isOpen) return;
+    const id = setInterval(() => {
+      const t = getTimeLeft();
+      setTimeLeft(t);
+      if (!t) clearInterval(id);
+    }, 1000);
+    return () => clearInterval(id);
+  }, [isOpen]);
 
   function handleStamp() {
     setStamped(true);
@@ -79,51 +107,74 @@ const Home = () => {
             </h1>
           </section>
 
-          {/* Assinatura do padrinho */}
+          {/* Assinatura / Contador */}
           <section className="mt-16!">
-            <div className="flex flex-col gap-4 text-center w-full">
-              <div className="flex justify-center mt-4 w-full">
-                <input
-                  type="text"
-                  value={nome}
-                  onChange={e => setNome(e.target.value)}
-                  maxLength={40}
-                  className="w-full bg-transparent border-b-2 border-[#6b4520]/60 text-center font-script text-5xl md:text-6xl text-[#3d2415] placeholder:text-[#9a7050]/40 outline-none pb-1 leading-tight caret-[#6b2119]"
-                />
+            {isOpen ? (
+              <div className="flex flex-col gap-4 text-center w-full">
+                <div className="flex justify-center mt-4 w-full">
+                  <input
+                    type="text"
+                    value={nome}
+                    onChange={e => setNome(e.target.value)}
+                    maxLength={40}
+                    className="w-full bg-transparent border-b-2 border-[#6b4520]/60 text-center font-script text-5xl md:text-6xl text-[#3d2415] placeholder:text-[#9a7050]/40 outline-none pb-1 leading-tight caret-[#6b2119]"
+                  />
+                </div>
+                <p className="font-title text-[10px] tracking-[0.4em] mt-3 text-[#65421f]">ASSINATURA</p>
+                <p className="font-old italic text-[#55381f]">Escrito e selado na véspera do pesar, quando a última testemunha ainda habitava este mundo.</p>
+                <div className="mt-16 flex justify-center items-center gap-10">
+                  {nome.trim()
+                    ? (
+                        <button
+                          onClick={handleStamp}
+                          disabled={stamped}
+                          className={['stamp-btn', stamped ? 'stamp-pressed' : ''].join(' ')}
+                          title="Aceitar o destino"
+                        >
+                          <span className="stamp-inner">
+                            <span className="stamp-cross">☩</span>
+                            <span className="stamp-text">ACEITO</span>
+                            <span className="stamp-sub">meu destino</span>
+                          </span>
+                        </button>
+                      )
+                    : (
+                        <div className="w-24 h-24 rounded-full border-4 border-[#6b2119]/70 flex items-center justify-center rotate-[-8deg] shadow-inner">
+                          <div className="w-16 h-16 rounded-full border border-[#6b2119]/60 flex items-center justify-center font-gothic text-3xl text-[#6b2119]">
+                            ✠
+                          </div>
+                        </div>
+                      )
+                  }
+                </div>
               </div>
-              <p className="font-title text-[10px] tracking-[0.4em] mt-3 text-[#65421f]">ASSINATURA</p>
-              <p className="font-old italic text-[#55381f]">Escrito e selado na véspera do pesar, quando a última testemunha ainda habitava este mundo.</p>
-              {/* Selos */}
-              <div className="mt-16 flex justify-center items-center gap-10">
-                {/* Botão carimbo — só aparece quando o nome foi preenchido */}
-                {nome.trim() 
-                  ? (
-                      <button
-                        onClick={handleStamp}
-                        disabled={stamped}
-                        className={[
-                          'stamp-btn',
-                          stamped ? 'stamp-pressed' : '',
-                        ].join(' ')}
-                        title="Aceitar o destino"
-                      >
-                        <span className="stamp-inner">
-                          <span className="stamp-cross">☩</span>
-                          <span className="stamp-text">ACEITO</span>
-                          <span className="stamp-sub">meu destino</span>
-                        </span>
-                      </button>
-                    )
-                  : (
-                    <div className="w-24 h-24 rounded-full border-4 border-[#6b2119]/70 flex items-center justify-center rotate-[-8deg] shadow-inner">
-                      <div className="w-16 h-16 rounded-full border border-[#6b2119]/60 flex items-center justify-center font-gothic text-3xl text-[#6b2119]">
-                        ✠
+            ) : (
+              <div className="flex flex-col items-center gap-6 text-center">
+                <p className="font-old italic text-[#55381f] text-lg">
+                  O testamento ainda não está pronto para ser revelado...
+                </p>
+                {timeLeft && (
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-lg mt-2">
+                    {[
+                      { value: timeLeft.days,    label: 'DIAS' },
+                      { value: timeLeft.hours,   label: 'HORAS' },
+                      { value: timeLeft.minutes, label: 'MINUTOS' },
+                      { value: timeLeft.seconds, label: 'SEGUNDOS' },
+                    ].map(({ value, label }) => (
+                      <div key={label} className="countdown-unit">
+                        <div className="countdown-number">
+                          {String(value).padStart(2, '0')}
+                        </div>
+                        <div className="countdown-label">{label}</div>
                       </div>
-                    </div>
-                    )
-                }
+                    ))}
+                  </div>
+                )}
+                <p className="font-old text-[#55381f] text-sm mt-2">
+                  Quando chegada a hora, as portas desta mansão se abrirão.
+                </p>
               </div>
-            </div>
+            )}
           </section>
           {/* Separador */}
           <div className="ornamental-line my-8!">

@@ -4,9 +4,8 @@ generator client {
 }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("hallowparty_PRISMA_DATABASE_URL")
-  directUrl = env("hallowparty_DATABASE_URL")
+  provider = "sqlite"
+  url      = env("hallowparty_PRISMA_DATABASE_URL")
 }
 
 model Trilha {

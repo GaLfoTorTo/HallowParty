@@ -34,7 +34,8 @@ async function completeMission(req, res) {
 
     const rawMissions = await missionModel.getByUser(userId);
     return res.json({ success: true, missions: normalizeMissions(rawMissions) });
-  } catch {
+  } catch(e) {
+    console.log(e)
     return res.status(500).json({ message: 'Não foi possível concluir a missão. Tente novamente.' });
   }
 }
