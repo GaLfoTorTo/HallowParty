@@ -80,4 +80,58 @@ async function stats(req, res) {
   }
 }
 
-module.exports = { stats, resetDb };
+async function ranking(req, res) {
+  try {
+    const users = await prisma.user.findMany({
+      include: {
+        missions:    { select: { id: true } },
+        testamentos: { include: { testamento: { select: { completed: true } } } },
+      },
+    });
+
+    const rows = users
+      .filter(u => u.testamentos.length > 0)
+      .map(u => ({
+        id:           u.id,
+        nome:         u.nome,
+        missionsDone: u.missions.length,
+        testamentosAtivos: u.testamentos.filter(ut => !ut.testamento.completed).length,
+      }))
+      .sort((a, b) => b.missionsDone - a.missionsDone || a.id - b.id)
+      .slice(0, 3);
+
+    res.json(rows);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+}
+
+async function recentUsers(req, res) {
+  try {
+    const users = await prisma.user.findMany({
+      orderBy: { id: 'desc' },
+      take: 5,
+      include: {
+        testamentos: {
+          include: {
+            testamento: { include: { trilha: true } },
+          },
+        },
+      },
+    });
+
+    const rows = users.map(u => ({
+      id:     u.id,
+      nome:   u.nome,
+      numero: u.numero,
+      trilha: u.testamentos[0]?.testamento?.trilha?.nome?.toLowerCase() ?? null,
+    }));
+
+    res.json(rows);
+  } catch (err) {
+    console.error('[GET /api/admin/recent-users]', err);
+    res.status(500).json({ message: err.message });
+  }
+}
+
+module.exports = { stats, resetDb, ranking, recentUsers };

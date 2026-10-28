@@ -31,6 +31,8 @@ export const api = {
   resetUser: (id) => request(`/users/${id}`, { method: 'DELETE' }),
 
   // Admin
-  getStats: () => request('/admin/stats'),
-  resetDb: () => request('/admin/reset', { method: 'POST' }),
+  getStats:       () => request('/admin/stats'),
+  getRanking:     () => request('/admin/ranking'),
+  getRecentUsers: () => request('/admin/recent-users'),
+  resetDb:        () => request('/admin/reset', { method: 'POST' }),
 };

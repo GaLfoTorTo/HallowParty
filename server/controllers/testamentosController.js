@@ -1,44 +1,83 @@
-const testamentoModel = require('../models/testamentoModel');
+const prisma = require('../db/prisma');
 
-const LINHAGENS_VALIDAS = ['fantasma', 'vampiro', 'zumbi'];
+async function list(req, res) {
+  try {
+    const testamentos = await prisma.testamento.findMany({
+      include: {
+        trilha: true,
+        users:  { include: { user: true } },
+      },
+      orderBy: { id: 'asc' },
+    });
 
-function list(req, res) {
-  res.json(testamentoModel.findAll());
-}
+    const result = testamentos.map(t => ({
+      id:        t.id,
+      titulo:    t.titulo,
+      senha:     t.senha,
+      completed: t.completed,
+      linhagem:  t.trilha?.nome?.toLowerCase() ?? null,
+      hasCurse:  false,
+      guestName: t.users[0]?.user?.nome ?? null,
+    }));
 
-function getOne(req, res) {
-  const t = testamentoModel.findById(req.params.id);
-  if (!t) return res.status(404).json({ message: 'Testamento não encontrado' });
-  res.json(t);
-}
-
-function create(req, res) {
-  const { linhagem, guestName, hasCurse } = req.body;
-  if (!linhagem || !LINHAGENS_VALIDAS.includes(linhagem.toLowerCase())) {
-    return res.status(400).json({ message: 'linhagem deve ser fantasma, vampiro ou zumbi' });
+    res.json(result);
+  } catch (err) {
+    console.error('[GET /api/testamentos]', err);
+    res.status(500).json({ message: err.message });
   }
-  const testamento = testamentoModel.create({ linhagem: linhagem.toLowerCase(), guestName, hasCurse });
-  res.status(201).json(testamento);
 }
 
-function generateBatch(req, res) {
-  const { quantidades } = req.body;
-  if (!quantidades) {
-    return res.status(400).json({ message: 'quantidades é obrigatório' });
+async function getOne(req, res) {
+  try {
+    const t = await prisma.testamento.findUnique({
+      where: { id: Number(req.params.id) },
+      include: { trilha: true, users: { include: { user: true } } },
+    });
+    if (!t) return res.status(404).json({ message: 'Testamento não encontrado' });
+    res.json({
+      ...t,
+      linhagem:  t.trilha?.nome?.toLowerCase() ?? null,
+      guestName: t.users[0]?.user?.nome ?? null,
+    });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
-  const created = testamentoModel.generateBatch({ quantidades });
-  res.status(201).json({ total: created.length, testamentos: created });
 }
 
-function remove(req, res) {
-  const deleted = testamentoModel.remove(req.params.id);
-  if (!deleted) return res.status(404).json({ message: 'Testamento não encontrado' });
-  res.json({ message: 'Testamento removido' });
+// Não utilizado no modelo atual (testamentos são pré-seeded)
+async function create(req, res) {
+  res.status(410).json({ message: 'Criação individual não suportada no modelo atual.' });
 }
 
-function clearAll(req, res) {
-  testamentoModel.clearAll();
-  res.json({ message: 'Todos os testamentos foram removidos' });
+// Não utilizado no modelo atual
+async function generateBatch(req, res) {
+  res.status(410).json({ message: 'Geração em lote não suportada no modelo atual.' });
+}
+
+async function remove(req, res) {
+  try {
+    await prisma.testamento.delete({ where: { id: Number(req.params.id) } });
+    res.json({ message: 'Testamento removido' });
+  } catch (err) {
+    res.status(404).json({ message: 'Testamento não encontrado' });
+  }
+}
+
+async function clearAll(req, res) {
+  try {
+    await prisma.$transaction([
+      prisma.userMission.deleteMany(),
+      prisma.userTestamento.deleteMany(),
+      prisma.user.deleteMany(),
+      prisma.testamento.updateMany({
+        data: { completed: 0, completed_at: null, user_id: null },
+      }),
+    ]);
+    res.json({ message: 'Todos os testamentos foram resetados.' });
+  } catch (err) {
+    console.error('[DELETE /api/testamentos/batch/all]', err);
+    res.status(500).json({ message: err.message });
+  }
 }
 
 module.exports = { list, getOne, create, generateBatch, remove, clearAll };

@@ -2,8 +2,10 @@ const router = require('express').Router();
 const ctrl = require('../controllers/adminController');
 const prisma = require('../db/prisma');
 
-router.get('/stats', ctrl.stats);
-router.post('/reset', ctrl.resetDb);
+router.get('/stats',        ctrl.stats);
+router.get('/ranking',      ctrl.ranking);
+router.get('/recent-users', ctrl.recentUsers);
+router.post('/reset',       ctrl.resetDb);
 
 router.get('/health', async (req, res) => {
   try {
