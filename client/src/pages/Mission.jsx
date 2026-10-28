@@ -104,15 +104,18 @@ function Mission() {
           <form onSubmit={handleSubmit} className="flex flex-col gap-10 mt-10!">
             <div className="flex flex-col gap-2 text-center">
               <input
-                type="text"
+                type="number"
+                inputMode="numeric"
+                pattern="[0-9]*"
                 value={fragmento}
-                onChange={(e) => setFragmento(e.target.value)}
+                onChange={(e) => setFragmento(e.target.value.replace(/\D/g, ''))}
                 required
                 maxLength={20}
                 placeholder="· fragmento ·"
                 className="w-full bg-transparent border-b-2 border-[#6b4520]/60 text-center font-script text-5xl md:text-6xl text-[#3d2415] placeholder:text-[#9a7050]/40 outline-none pb-1 leading-tight caret-[#6b2119]"
               />
               <p className="font-title text-[10px] tracking-[0.4em] text-[#65421f]">FRAGMENTO</p>
+              <p className="font-title text-[10px] tracking-[0.3em] text-[#65421f]/70">todos os fragmentos são números de 2 dígitos</p>
               <p className="font-script text-red-900">Os mortos não mentem e não perdoam impostores...</p>
             </div>
 
