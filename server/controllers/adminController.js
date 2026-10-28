@@ -7,13 +7,12 @@ const testamentosFile = path.join(__dirname, '../seed/testamentos.json');
 
 async function resetDb(req, res) {
   try {
-    await prisma.userMission.deleteMany();
-    await prisma.userTestamento.deleteMany();
-    await prisma.user.deleteMany();
-    await prisma.testamento.deleteMany();
-    await prisma.mission.deleteMany();
-    await prisma.trilha.deleteMany();
+    // Dropa todos os dados e reseta as sequências de ID em uma única operação
+    await prisma.$executeRawUnsafe(
+      `TRUNCATE TABLE user_missions, user_testamentos, users, testamentos, missions, trilha RESTART IDENTITY CASCADE`
+    );
 
+    // Seeds
     await prisma.trilha.createMany({
       data: [
         { id: 1, nome: 'Vampiro' },
