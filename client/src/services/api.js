@@ -27,6 +27,7 @@ export const api = {
   checkSenha: (body) => request('/validate/check', { method: 'POST', body }),
 
   // Users
+  checkName: (nome) => request(`/users/check-name?nome=${encodeURIComponent(nome)}`),
   resetUser: (id) => request(`/users/${id}`, { method: 'DELETE' }),
 
   // Admin

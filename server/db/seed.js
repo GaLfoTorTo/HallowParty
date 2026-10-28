@@ -8,13 +8,11 @@ const prisma = new PrismaClient();
 const missionsFile    = path.join(__dirname, '../seed/missions.json');
 const testamentosFile = path.join(__dirname, '../seed/testamentos.json');
 
-const pickRandom = (arr, n) => [...arr].sort(() => Math.random() - 0.5).slice(0, n);
 
 async function main() {
   // Limpa na ordem correta (respeita foreign keys)
   await prisma.userMission.deleteMany();
   await prisma.userTestamento.deleteMany();
-  await prisma.testamentoMission.deleteMany();
   await prisma.user.deleteMany();
   await prisma.testamento.deleteMany();
   await prisma.mission.deleteMany();
@@ -33,7 +31,7 @@ async function main() {
   // Missões
   const missions = JSON.parse(fs.readFileSync(missionsFile, 'utf-8'));
   await prisma.mission.createMany({
-    data: missions.map(({ id, titulo, descricao, categoria }) => ({ id, titulo, descricao, categoria })),
+    data: missions.map(({ id, titulo, descricao, categoria, linhagem }) => ({ id, titulo, descricao, categoria, linhagem })),
   });
 
   // Testamentos
@@ -49,16 +47,6 @@ async function main() {
       completed_at: null,
     })),
   });
-
-  // Vincular missões a testamentos (5 aleatórias por testamento)
-  const links = [];
-  for (const t of testamentos) {
-    const picked = pickRandom(missions, 5);
-    for (const m of picked) {
-      links.push({ testamento_id: t.id, mission_id: m.id });
-    }
-  }
-  await prisma.testamentoMission.createMany({ data: links });
 
   console.log('Seed concluído com sucesso.');
 }

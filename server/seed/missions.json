@@ -1,352 +1,359 @@
 [
   {
     "id": 1,
-    "titulo": "O Artefato Perdido",
-    "linhagem": "fantasma",
-    "categoria": "investigacao",
-    "descricao": "Encontre um objeto escondido em algum canto da decoração da festa"
+    "titulo": "A Sede Eterna",
+    "linhagem": "vampiro",
+    "categoria": "enigmas",
+    "descricao": "A noite me fortalece, o sol me condena. Busco o sangue dos vivos e fujo da cruz. Meus dentes revelam aquilo que sou. Que criatura sou eu?"
   },
   {
     "id": 2,
-    "titulo": "Símbolo da Morte",
-    "linhagem": "fantasma",
-    "categoria": "investigacao",
-    "descricao": "Localize um símbolo de caveira escondido na decoração"
+    "titulo": "O Imortal",
+    "linhagem": "vampiro",
+    "categoria": "enigmas",
+    "descricao": "Séculos podem passar sem que eu envelheça. Durmo longe da luz e desperto quando o mundo adormece. A eternidade é minha maldição. Quem sou eu?"
   },
   {
     "id": 3,
-    "titulo": "A Chave do Espectro",
-    "linhagem": "fantasma",
-    "categoria": "investigacao",
-    "descricao": "Descubra onde está a chave que o Fantasma escondeu"
+    "titulo": "O Senhor da Noite",
+    "linhagem": "vampiro",
+    "categoria": "enigmas",
+    "descricao": "Não sou morcego, mas posso voar como um. Não sou morto comum, pois retorno a cada noite. O sangue é meu sustento e o medo anuncia minha chegada. Quem sou?"
   },
   {
     "id": 4,
-    "titulo": "Mensagem do Além",
-    "linhagem": "fantasma",
-    "categoria": "investigacao",
-    "descricao": "Encontre a mensagem secreta escondida em algum lugar da festa"
+    "titulo": "O Reflexo Ausente",
+    "linhagem": "vampiro",
+    "categoria": "enigmas",
+    "descricao": "Dizem que não apareço onde os outros se enxergam. Carrego presas, temo o amanhecer e transformo minhas vítimas em parte da minha linhagem. Qual é meu nome?"
   },
   {
     "id": 5,
-    "titulo": "O Intruso Oculto",
+    "titulo": "O Visitante Invisível",
     "linhagem": "fantasma",
-    "categoria": "investigacao",
-    "descricao": "Identifique um objeto que não deveria estar naquele lugar da decoração"
+    "categoria": "enigmas",
+    "descricao": "Não preciso de portas para entrar, nem de pés para percorrer os corredores. Já pertenci ao mundo dos vivos, mas agora sou apenas uma presença. Quem sou?"
   },
   {
     "id": 6,
-    "titulo": "Inventário das Caveiras",
+    "titulo": "A Alma Errante",
     "linhagem": "fantasma",
-    "categoria": "observacao",
-    "descricao": "Descubra quantas caveiras existem no ambiente principal da festa"
+    "categoria": "enigmas",
+    "descricao": "Meu corpo ficou para trás, mas minha presença permanece. Posso surgir em lugares antigos e desaparecer antes que alguém me alcance. O que sou?"
   },
   {
     "id": 7,
-    "titulo": "A Paleta do Horror",
+    "titulo": "O Sussurro do Além",
     "linhagem": "fantasma",
-    "categoria": "observacao",
-    "descricao": "Identifique qual a cor predominante na decoração do setor das bebidas"
+    "categoria": "enigmas",
+    "descricao": "Não tenho carne nem ossos, mas posso causar arrepios. Alguns dizem ouvir minha voz quando o silêncio domina a casa. Que ser sou eu?"
   },
   {
     "id": 8,
-    "titulo": "O Padrão Maldito",
+    "titulo": "A Presença Sem Corpo",
     "linhagem": "fantasma",
-    "categoria": "observacao",
-    "descricao": "Encontre um símbolo que se repete três ou mais vezes na decoração"
+    "categoria": "enigmas",
+    "descricao": "Sou lembrança de quem partiu, sombra de uma vida encerrada. Posso atravessar paredes e desaparecer no ar. Os vivos temem me encontrar. Quem sou?"
   },
   {
     "id": 9,
-    "titulo": "O Segredo Deslocado",
-    "linhagem": "fantasma",
-    "categoria": "observacao",
-    "descricao": "Descubra qual objeto da decoração mudou de lugar durante a noite"
+    "titulo": "O Retornado",
+    "linhagem": "zumbi",
+    "categoria": "enigmas",
+    "descricao": "Fui enterrado, mas não permaneci em meu túmulo. Caminho sem vida, arrasto os pés e procuro os vivos. Que criatura voltou da morte?"
   },
   {
     "id": 10,
-    "titulo": "A Bruxa Escondida",
-    "linhagem": "fantasma",
-    "categoria": "observacao",
-    "descricao": "Encontre a imagem específica de uma bruxa escondida na decoração"
+    "titulo": "A Fome Sem Fim",
+    "linhagem": "zumbi",
+    "categoria": "enigmas",
+    "descricao": "Não sinto o calor da vida, mas continuo faminto. Minha pele denuncia a decomposição e meus passos anunciam perigo. Quem sou eu?"
   },
   {
     "id": 11,
-    "titulo": "O Sangue que Não Mente",
-    "linhagem": "fantasma",
-    "categoria": "pessoas",
-    "descricao": "Encontre uma pessoa usando algum item vermelho na fantasia"
+    "titulo": "O Morto que Anda",
+    "linhagem": "zumbi",
+    "categoria": "enigmas",
+    "descricao": "A morte já me levou, mas algo me fez levantar. Não corro como os vivos, não penso como antes e sigo em busca de carne. Qual é meu nome?"
   },
   {
     "id": 12,
-    "titulo": "A Moeda da Sorte",
-    "linhagem": "fantasma",
-    "categoria": "pessoas",
-    "descricao": "Descubra quem está com uma moeda temática escondida no bolso"
+    "titulo": "A Praga Caminhante",
+    "linhagem": "zumbi",
+    "categoria": "enigmas",
+    "descricao": "Quando apareço, os vivos correm e os cemitérios parecem vazios. Sou um corpo sem vida que insiste em caminhar. Que nome recebe alguém como eu?"
   },
   {
     "id": 13,
-    "titulo": "O Veterano da Meia-Noite",
-    "linhagem": "fantasma",
-    "categoria": "pessoas",
-    "descricao": "Encontre alguém que tenha chegado na festa antes das 21h"
+    "titulo": "O Cálice da Última Ceia",
+    "linhagem": "vampiro",
+    "categoria": "investigacao",
+    "descricao": "O sangue ancestral foi servido em um cálice que jamais deveria ser encontrado. Procure entre os adornos da noite e encontre o fragmento gravado em sua base."
   },
   {
     "id": 14,
-    "titulo": "O Nome do Guardião",
-    "linhagem": "fantasma",
-    "categoria": "pessoas",
-    "descricao": "Pergunte a três pessoas diferentes qual o nome do Guardião da Herança"
+    "titulo": "A Linhagem Sanguínea",
+    "linhagem": "vampiro",
+    "categoria": "investigacao",
+    "descricao": "Entre os sacos de sangue repousa uma linhagem rara, distinta de todas as outras. Investigue os recipientes e encontre aquele que pertence à linhagem especial. O fragmento da herança está junto ao sangue escolhido."
   },
   {
     "id": 15,
-    "titulo": "Voz sem Corpo",
-    "linhagem": "fantasma",
-    "categoria": "enigmas",
-    "descricao": "Resolva a charada: 'Eu falo sem boca e ouço sem ouvido. O que sou eu?' (Resposta: eco)"
+    "titulo": "O Convite Manchado",
+    "linhagem": "vampiro",
+    "categoria": "investigacao",
+    "descricao": "Um convite foi deixado para aquele que não teme a noite. A mancha escarlate não está ali por acaso. Encontre o bilhete perdido e descubra o fragmento em suas palavras."
   },
   {
     "id": 16,
-    "titulo": "Gosto de Sangue",
+    "titulo": "O Segredo do Leito",
     "linhagem": "vampiro",
-    "categoria": "bebidas",
-    "descricao": "Experimente o Gumy Vermelho — o drink exclusivo do Vampiro"
+    "categoria": "investigacao",
+    "descricao": "Quando o sol nasce, o descanso dos imortais precisa ser protegido. Localize o leito dos imortais e encontre o fragmento que só os olhos atentos conseguirão ver."
   },
   {
     "id": 17,
-    "titulo": "Brinde Imortal",
-    "linhagem": "vampiro",
-    "categoria": "bebidas",
-    "descricao": "Faça um brinde com a bebida chamada 'Sangue do Vampiro'"
+    "titulo": "A Relíquia dos Esquecidos",
+    "linhagem": "fantasma",
+    "categoria": "investigacao",
+    "descricao": "Uma relíquia permaneceu neste mundo mesmo depois de seu dono partir. Encontre aquele que parece deslocado no tempo, ele lhe revelará o fragmento deixado pelo além."
   },
   {
     "id": 18,
-    "titulo": "A Poção Proibida",
-    "linhagem": "vampiro",
-    "categoria": "bebidas",
-    "descricao": "Descubra qual bebida da festa é chamada de 'A Poção'"
+    "titulo": "O Olhar das Caveiras",
+    "linhagem": "fantasma",
+    "categoria": "investigacao",
+    "descricao": "As caveiras guardam silêncio, mas seus olhos denunciam segredos. Encontre a que observa o salão de um ângulo incomum. O fragmento não está onde todos olham, mas onde poucos se lembram de procurar."
   },
   {
     "id": 19,
-    "titulo": "O Cálice Escarlate",
-    "linhagem": "vampiro",
-    "categoria": "bebidas",
-    "descricao": "Encontre a bebida vermelha escondida entre as opções do bar"
+    "titulo": "A Fechadura do Espectro",
+    "linhagem": "fantasma",
+    "categoria": "investigacao",
+    "descricao": "Um espírito protege um segredo que os vivos ainda não podem conhecer. Procure entre os ornamentos a fechadura que guarda esse mistério. O fragmento que procura está mais perto do que imagina."
   },
   {
     "id": 20,
-    "titulo": "Tentação Carmesim",
-    "linhagem": "vampiro",
-    "categoria": "comidas",
-    "descricao": "Encontre e experimente o doce exclusivo do Vampiro"
+    "titulo": "A Mensagem Inacabada",
+    "linhagem": "fantasma",
+    "categoria": "investigacao",
+    "descricao": "Uma mensagem atravessou a fronteira entre os mundos, mas parte dela foi ocultada. Encontre o bilhete perdido e observe atentamente seus sinais. O fragmento está escrito para quem souber enxergar além das palavras."
   },
   {
     "id": 21,
-    "titulo": "O Coração do Banquete",
-    "linhagem": "vampiro",
-    "categoria": "comidas",
-    "descricao": "Encontre o 'coração' do banquete — o prato principal da mesa"
+    "titulo": "O Mapa da Decomposição",
+    "linhagem": "zumbi",
+    "categoria": "investigacao",
+    "descricao": "Os mortos caminharam pela festa antes de você chegar e deixaram vestígios de sua passagem. Siga as pegadas dos mortos, ali estará o fragmento que os vivos deixaram passar."
   },
   {
     "id": 22,
-    "titulo": "Pista de Sangue",
-    "linhagem": "vampiro",
-    "categoria": "comidas",
-    "descricao": "Descubra qual comida da festa está relacionada à pista do Vampiro"
+    "titulo": "O Bilhete do Além",
+    "linhagem": "zumbi",
+    "categoria": "investigacao",
+    "descricao": "Mesmo após encontrar seu descanso eterno, um dos seus deixou um último recado para os vivos. Procure entre os vestígios daqueles que já partiram e encontre o bilhete perdido. Suas últimas palavras guardam o fragmento que você procura."
   },
   {
     "id": 23,
-    "titulo": "Novo Sangue",
-    "linhagem": "vampiro",
-    "categoria": "interacao",
-    "descricao": "Encontre alguém que você ainda não conhecia e descubra seu nome"
+    "titulo": "O Aviso de Contaminação",
+    "linhagem": "zumbi",
+    "categoria": "investigacao",
+    "descricao": "Um aviso foi deixado para impedir que os vivos se aproximassem demais. Procure o sinal de perigo entre os adornos. O fragmento aguarda quem não teme a contaminação."
   },
   {
     "id": 24,
-    "titulo": "Pela Eternidade",
-    "linhagem": "vampiro",
-    "categoria": "interacao",
-    "descricao": "Faça um brinde com outro convidado usando a frase 'Pela eternidade'"
+    "titulo": "O Túmulo Sem Nome",
+    "linhagem": "zumbi",
+    "categoria": "investigacao",
+    "descricao": "Há uma sepultura que não deveria estar vazia, mas também não revela quem repousou ali. Encontre o túmulo do indigente e investigue sua inscrição. O nome desapareceu, porém o fragmento permaneceu."
   },
   {
     "id": 25,
-    "titulo": "O Servo das Sombras",
+    "titulo": "O Inventário da Cripta",
     "linhagem": "vampiro",
-    "categoria": "interacao",
-    "descricao": "Encontre o 'Servo do Vampiro' — alguém usando uma capa preta"
+    "categoria": "observacao",
+    "descricao": "A linhagem ancestral deixou marcas de sua existência pela cripta. Conte quantas presas vampíricas foram espalhadas pela decoração. A quantidade revelará o fragmento que você busca."
   },
   {
     "id": 26,
-    "titulo": "Código da Noite",
+    "titulo": "As Marcas Escarlates",
     "linhagem": "vampiro",
-    "categoria": "interacao",
-    "descricao": "Descubra a palavra-chave conversando com outro convidado da linhagem Vampiro"
+    "categoria": "observacao",
+    "descricao": "O sangue dos antigos deixou vestígios entre os vivos. Observe os adornos e conte quantos símbolos vermelhos foram espalhados pelo recinto. O total revelará o fragmento da linhagem."
   },
   {
     "id": 27,
-    "titulo": "Presas à Mostra",
+    "titulo": "O Banquete Imortal",
     "linhagem": "vampiro",
-    "categoria": "social",
-    "descricao": "Tire uma foto temática com outro convidado mostrando as presas do Vampiro"
+    "categoria": "observacao",
+    "descricao": "Nem todo cálice foi servido aos vivos. Investigue a decoração e conte quantos cálices ou taças temáticas foram preparados para o banquete da noite. A quantidade revelará seu fragmento."
   },
   {
     "id": 28,
-    "titulo": "A Aliança das Linhagens",
+    "titulo": "As Asas da Noite",
     "linhagem": "vampiro",
-    "categoria": "social",
-    "descricao": "Reúna uma pessoa da linhagem Fantasma e uma da linhagem Zumbi numa foto"
+    "categoria": "observacao",
+    "descricao": "Os servos alados da linhagem ancestral vigiam os arredores. Conte quantos morcegos foram espalhados pelo recinto. O número revelará seu fragmento."
   },
   {
     "id": 29,
-    "titulo": "Juro de Servidão",
-    "linhagem": "vampiro",
-    "categoria": "social",
-    "descricao": "Consiga que outra pessoa diga 'Eu sirvo ao Vampiro' sem rir"
+    "titulo": "O Inventário das Caveiras",
+    "linhagem": "fantasma",
+    "categoria": "observacao",
+    "descricao": "Os esqueletos guardam os segredos do além. Conte quantas caveiras podem ser encontradas no recinto. A quantidade revelará o fragmento que os mortos deixaram para você."
   },
   {
     "id": 30,
-    "titulo": "A Marcha dos Mortos",
-    "linhagem": "zumbi",
-    "categoria": "desafios",
-    "descricao": "Caminhe como um zumbi por 30 segundos por um corredor da festa"
+    "titulo": "Os Sussurros do Além",
+    "linhagem": "fantasma",
+    "categoria": "observacao",
+    "descricao": "Os espíritos deixaram sinais discretos entre os vivos. Procure pelos pequenos fantasmas espalhados pela decoração. O total revelará o fragmento do além."
   },
   {
     "id": 31,
-    "titulo": "Pose Mortal",
-    "linhagem": "zumbi",
-    "categoria": "desafios",
-    "descricao": "Faça uma pose de morto-vivo e tire uma foto como evidência"
+    "titulo": "O Padrão Maldito",
+    "linhagem": "fantasma",
+    "categoria": "observacao",
+    "descricao": "Um símbolo insiste em aparecer entre os ornamentos, como se os mortos tentassem deixar um aviso. Descubra qual símbolo se repete pela decoração e conte suas aparições. O total revelará o fragmento."
   },
   {
     "id": 32,
-    "titulo": "Gemido da Putrefação",
-    "linhagem": "zumbi",
-    "categoria": "desafios",
-    "descricao": "Imite um zumbi (gemidos e movimentos) durante 10 segundos na frente de alguém"
+    "titulo": "A Bruxa Escondida",
+    "linhagem": "fantasma",
+    "categoria": "observacao",
+    "descricao": "Entre os ornamentos, uma figura aguarda ser reconhecida. Encontre a bruxa escondida na decoração e observe a marca que ela carrega. O número revelado será seu fragmento."
   },
   {
     "id": 33,
-    "titulo": "Thriller dos Ossos",
+    "titulo": "A Contagem dos Retornados",
     "linhagem": "zumbi",
-    "categoria": "desafios",
-    "descricao": "Faça a pequena coreografia do Thriller com outro convidado"
+    "categoria": "observacao",
+    "descricao": "Os mortos começaram a sair de suas covas e deixaram seus rostos espalhados pela festa. Conte quantos zumbis aparecem na decoração. O total revelará o fragmento da horda."
   },
   {
     "id": 34,
-    "titulo": "O Cérebro do Festim",
+    "titulo": "Os Ossos Errantes",
     "linhagem": "zumbi",
-    "categoria": "comida",
-    "descricao": "Encontre e experimente o 'Cérebro' do banquete — o doce especial dos Zumbis"
+    "categoria": "observacao",
+    "descricao": "Nem todos os restos mortais foram enterrados. Observe os elementos esqueléticos espalhados pelo recinto e contabilize os ossos decorativos encontrados. A quantidade será seu fragmento."
   },
   {
     "id": 35,
-    "titulo": "O Tesouro Podre",
-    "linhagem": "zumbi",
-    "categoria": "comida",
-    "descricao": "Encontre a comida escondida que o Zumbi deixou na festa"
+    "titulo": "A Canção dos Mortos",
+    "linhagem": "fantasma",
+    "categoria": "observacao",
+    "descricao": "O Rei do Pop deixou seu chamado entre os vivos. Encontre na playlist a canção imortalizada pelos passos de mortos-vivos. A posição em que ela aparece será seu fragmento."
   },
   {
     "id": 36,
-    "titulo": "Cor da Gangrena",
+    "titulo": "Os Olhos da Horda",
     "linhagem": "zumbi",
-    "categoria": "comida",
-    "descricao": "Identifique qual alimento da mesa temática tem a cor verde"
+    "categoria": "observacao",
+    "descricao": "Mesmo sem reconhecer os vivos, a horda continua observando. Conte quantos olhos decorativos foram escondidos pelo recinto. A quantidade revelará o fragmento que procura."
   },
   {
     "id": 37,
-    "titulo": "Ressurreição pela Batida",
-    "linhagem": "zumbi",
-    "categoria": "musica",
-    "descricao": "Dance quando a música tema dos Zumbis tocar — mostre que você sobreviveu"
+    "titulo": "A Chama da Eternidade",
+    "linhagem": "vampiro",
+    "categoria": "busca",
+    "descricao": "A linhagem ancestral deixou uma pequena luz para guiar seus herdeiros. Procure pela chama imóvel que desafia a escuridão, mas não ilumina por conta própria. O fragmento repousa junto à luz que não se apaga."
   },
   {
     "id": 38,
-    "titulo": "Dança dos Condenados",
-    "linhagem": "zumbi",
-    "categoria": "musica",
-    "descricao": "Encontre alguém dançando e dance com essa pessoa por pelo menos 1 minuto"
+    "titulo": "O Último Brilho",
+    "linhagem": "vampiro",
+    "categoria": "busca",
+    "descricao": "Dizem que até os imortais precisam de um sinal para encontrar o caminho de volta. Busque algo que pode carregar fogo sem caminhar e que, quando desperto, consome a si mesmo. O fragmento se encontra próximo."
   },
   {
     "id": 39,
-    "titulo": "Coreografia da Horda",
-    "linhagem": "zumbi",
-    "categoria": "musica",
-    "descricao": "Reproduza a coreografia simples ensinada pelo DJ quando ele der o sinal"
+    "titulo": "A Luz que Não Dorme",
+    "linhagem": "vampiro",
+    "categoria": "busca",
+    "descricao": "Enquanto os vivos descansam, uma pequena sentinela permanece preparada para romper o breu. Não tem coração, mas pode arder; não tem voz, mas sua presença anuncia a noite. Encontre-a e reclame o fragmento escondido."
   },
   {
     "id": 40,
-    "titulo": "Cicatrizes da Horda",
-    "linhagem": "zumbi",
-    "categoria": "interacao",
-    "descricao": "Faça uma foto com outro Zumbi mostrando as 'feridas' de vocês"
+    "titulo": "O Guardião da Penumbra",
+    "linhagem": "vampiro",
+    "categoria": "busca",
+    "descricao": "Um vestígio da antiga linhagem foi deixado entre os ornamentos. Procure o objeto que nasce sólido e guarda uma chama em seu interior. Apenas um deles carrega o segredo que você procura."
   },
   {
     "id": 41,
-    "titulo": "Convertendo os Vivos",
-    "linhagem": "zumbi",
-    "categoria": "interacao",
-    "descricao": "Convença alguém a fazer uma pose de morto-vivo para uma foto"
+    "titulo": "O Véu dos Esquecidos",
+    "linhagem": "fantasma",
+    "categoria": "busca",
+    "descricao": "Uma presença do além deixou para trás aquilo que separa o visível do invisível. Procure algo leve, capaz de cobrir um rosto ou esconder uma forma, abandonado entre os adornos. O fragmento aguarda junto ao vestígio do espírito."
   },
   {
     "id": 42,
-    "titulo": "Verde da Decomposição",
-    "linhagem": "zumbi",
-    "categoria": "interacao",
-    "descricao": "Encontre alguém usando a cor verde na fantasia"
+    "titulo": "O Manto sem Dono",
+    "linhagem": "fantasma",
+    "categoria": "busca",
+    "descricao": "Nem tudo que parece vazio está desprovido de história. Encontre o tecido esquecido que poderia envolver uma aparição e desaparecer nas sombras. Um deles guarda o fragmento do além."
   },
   {
     "id": 43,
-    "titulo": "Propagando o Vírus",
-    "linhagem": "zumbi",
-    "categoria": "interacao",
-    "descricao": "Consiga que outra pessoa imite um zumbi por pelo menos 5 segundos"
+    "titulo": "A Mortalha Perdida",
+    "linhagem": "fantasma",
+    "categoria": "busca",
+    "descricao": "Antes de atravessar para o outro lado, uma alma deixou um último vestígio de sua passagem. Procure algo flexível, sem forma própria, que possa ocultar aquilo que envolve. O fragmento foi deixado junto a essa relíquia."
   },
   {
     "id": 44,
-    "titulo": "Rastro Invisível",
+    "titulo": "O Toque do Invisível",
     "linhagem": "fantasma",
-    "categoria": "investigacao",
-    "descricao": "Encontre três objetos de cores diferentes escondidos na decoração e anote as cores"
+    "categoria": "busca",
+    "descricao": "Uma presença silenciosa tocou o mundo dos vivos e deixou uma pista para quem souber observá-la. Busque um objeto de tecido que possa ondular com o vento e cobrir aquilo que não deve ser visto. Nele repousa o fragmento perdido."
   },
   {
     "id": 45,
-    "titulo": "O Sussurro Proibido",
-    "linhagem": "fantasma",
-    "categoria": "pessoas",
-    "descricao": "Descubra o nome completo de um convidado sem perguntar diretamente"
+    "titulo": "A Mão da Sepultura",
+    "linhagem": "zumbi",
+    "categoria": "busca",
+    "descricao": "Ao sair da terra, um dos retornados deixou para trás a proteção de sua mão apodrecida. Procure o objeto que veste os dedos e esconde a pele dos vivos. O fragmento da horda permanece junto ao vestígio abandonado."
   },
   {
     "id": 46,
-    "titulo": "Espelho da Alma",
-    "linhagem": "fantasma",
-    "categoria": "observacao",
-    "descricao": "Encontre um espelho decorativo na festa e tire uma selfie assustadora nele"
+    "titulo": "O Toque dos Mortos",
+    "linhagem": "zumbi",
+    "categoria": "busca",
+    "descricao": "A horda passou por este lugar e deixou uma proteção incompleta entre os vivos. Encontre algo que se encaixa na mão, acompanha cada movimento dos dedos e pode ocultar marcas de decomposição. O número procurado está junto a esse objeto."
   },
   {
     "id": 47,
-    "titulo": "Hipnose do Olhar",
-    "linhagem": "vampiro",
-    "categoria": "social",
-    "descricao": "Mantenha contato visual com outro convidado por 10 segundos sem sorrir"
+    "titulo": "O Vestígio da Infecção",
+    "linhagem": "zumbi",
+    "categoria": "busca",
+    "descricao": "Nem todos os sinais da contaminação são manchas ou feridas. Um dos mortos deixou um acessório que cobre a mão antes de avançar sobre suas vítimas. Rastreie esse vestígio pela decoração e encontre o fragmento escondido."
   },
   {
     "id": 48,
-    "titulo": "O Último Gole",
-    "linhagem": "vampiro",
-    "categoria": "bebidas",
-    "descricao": "Termine sua bebida de uma vez só diante de uma testemunha que possa confirmar"
+    "titulo": "A Proteção do Retornado",
+    "linhagem": "zumbi",
+    "categoria": "busca",
+    "descricao": "Mesmo sem sentir frio, os mortos ainda carregam aquilo que um dia protegeu seus dedos. Procure entre os elementos da festa o acessório que se veste na mão e acompanha os movimentos de quem o usa. O fragmento está junto à peça esquecida."
   },
   {
     "id": 49,
-    "titulo": "Infecção em Cadeia",
-    "linhagem": "zumbi",
-    "categoria": "interacao",
-    "descricao": "Convença três pessoas diferentes a fazer o gesto de zumbi em sequência"
+    "titulo": "A Maldição dos Imortais",
+    "linhagem": "vampiro",
+    "categoria": "desafio",
+    "descricao":  "Os séculos passam, os impérios caem, mas certas maldições aguardam por um instante específico para se cumprir. No Testamento, nem mesmo a eternidade guarda a resposta. Procure o número que se esconde no limite entre o fim e o recomeço, quando outubro entrega seus últimos segredos à noite."
   },
   {
     "id": 50,
-    "titulo": "O Último a Cair",
+    "titulo": "O Ano dos Condenados",
+    "linhagem": "fantasma",
+    "categoria": "desafio",
+    "descricao": "Entre os dias que compõem o mês, um deles parece pertencer menos aos vivos do que aos que partiram. É quando o véu se torna tênue e as presenças esquecidas encontram espaço para retornar. Os espíritos não revelam a data, apenas sussurram: procure o último marco antes que outubro desapareça."
+  },
+  {
+    "id": 51,
+    "titulo": "O Despertar da Horda",
     "linhagem": "zumbi",
-    "categoria": "desafios",
-    "descricao": "Fique parado como uma estátua de morto-vivo por 20 segundos sem rir"
+    "categoria": "desafio",
+    "descricao": "A terra treme, os túmulos se abrem e a horda desperta seguindo um chamado antigo. Não é o luar que determina sua marcha, nem o relógio que anuncia seu retorno. O Testamento guarda a chave em um número: aquele que encerra a contagem dos dias de outubro e abre caminho para a noite dos condenados."
   }
 ]

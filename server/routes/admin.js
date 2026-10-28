@@ -3,6 +3,7 @@ const ctrl = require('../controllers/adminController');
 const prisma = require('../db/prisma');
 
 router.get('/stats', ctrl.stats);
+router.post('/reset', ctrl.resetDb);
 
 router.get('/health', async (req, res) => {
   try {

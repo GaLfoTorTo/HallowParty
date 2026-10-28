@@ -17,11 +17,11 @@ model Trilha {
 }
 
 model Mission {
-  id           Int                 @id
+  id           Int           @id
   titulo       String
   descricao    String
   categoria    String
-  testamentos  TestamentoMission[]
+  linhagem     String        @default("")
   userMissions UserMission[]
 
   @@map("missions")
@@ -38,28 +38,17 @@ model User {
 }
 
 model Testamento {
-  id           Int                 @id
+  id           Int              @id
   titulo       String
   trilha_id    Int
-  trilha       Trilha              @relation(fields: [trilha_id], references: [id], onDelete: Cascade)
+  trilha       Trilha           @relation(fields: [trilha_id], references: [id], onDelete: Cascade)
   senha        String
   user_id      Int?
-  completed    Int                 @default(0)
+  completed    Int              @default(0)
   completed_at DateTime?
-  missions     TestamentoMission[]
   users        UserTestamento[]
 
   @@map("testamentos")
-}
-
-model TestamentoMission {
-  id            Int        @id @default(autoincrement())
-  testamento_id Int
-  mission_id    Int
-  testamento    Testamento @relation(fields: [testamento_id], references: [id], onDelete: Cascade)
-  mission       Mission    @relation(fields: [mission_id], references: [id], onDelete: Cascade)
-
-  @@map("testamento_missions")
 }
 
 model UserTestamento {

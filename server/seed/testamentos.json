@@ -3,7 +3,7 @@
         "id": 1,
         "titulo": "Testamento do Vampiro",
         "trilha_id": 1,
-        "senha": 777349,
+        "senha": "0745102931",
         "user_id": null,
         "completed": 0,
         "completed_at": null
@@ -12,7 +12,7 @@
         "id": 2,
         "titulo": "Testamento do Fantasma",
         "trilha_id": 2,
-        "senha": 123349,
+        "senha": "0802857731",
         "user_id": null,
         "completed": 0,
         "completed_at": null
@@ -21,7 +21,7 @@
         "id": 3,
         "titulo": "Testamento do Zumbi",
         "trilha_id": 3,
-        "senha": 236464,
+        "senha": "0511882031",
         "user_id": null,
         "completed": 0,
         "completed_at": null

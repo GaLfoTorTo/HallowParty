@@ -46,6 +46,14 @@ async function create(req, res) {
   }
 }
 
+// GET /api/users/check-name?nome=xxx
+async function checkName(req, res) {
+  const { nome } = req.query;
+  if (!nome || !nome.trim()) return res.status(400).json({ message: 'Nome é obrigatório' });
+  const existing = await userModel.findByField('nome', nome.trim());
+  return res.json({ available: !existing });
+}
+
 // GET /api/users/:id
 async function getById(req, res) {
   const user = await userModel.find(req.params.id);
@@ -64,4 +72,4 @@ async function remove(req, res) {
   }
 }
 
-module.exports = { create, getById, remove };
+module.exports = { create, checkName, getById, remove };

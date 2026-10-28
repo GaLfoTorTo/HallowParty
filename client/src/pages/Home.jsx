@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { api } from '../services/api';
 
 const EVENT_DATE = new Date('2026-10-31T17:00:00');
 const BYPASS_KEY = 'halloween2026';
@@ -18,6 +19,8 @@ function getTimeLeft() {
 const Home = () => {
   const [nome, setNome] = useState('');
   const [stamped, setStamped] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [erro, setErro] = useState('');
   const [timeLeft, setTimeLeft] = useState(getTimeLeft);
   const navigate = useNavigate();
 
@@ -34,9 +37,24 @@ const Home = () => {
     return () => clearInterval(id);
   }, [isOpen]);
 
-  function handleStamp() {
-    setStamped(true);
-    setTimeout(() => navigate('/trail', { state: { nome } }), 2600);
+  async function handleStamp() {
+    if (stamped || loading) return;
+    setErro('');
+    setLoading(true);
+    try {
+      const { ok, data } = await api.checkName(nome.trim());
+      if (!ok) throw new Error(data?.message || 'Erro ao verificar nome');
+      if (!data.available) {
+        setErro('Este nome já está sendo usado por outro convidado');
+        return;
+      }
+      setStamped(true);
+      setTimeout(() => navigate('/trail', { state: { nome: nome.trim() } }), 2600);
+    } catch (err) {
+      setErro(err.message || 'Erro ao verificar nome. Tente novamente.');
+    } finally {
+      setLoading(false);
+    }
   }
   return (
     <div className="flex items-center justify-center bg-page min-h-screen p-5 md:p-10">
@@ -122,18 +140,19 @@ const Home = () => {
                 </div>
                 <p className="font-title text-[10px] tracking-[0.4em] mt-3 text-[#65421f]">ASSINATURA</p>
                 <p className="font-old italic text-[#55381f]">Escrito e selado na véspera do pesar, quando a última testemunha ainda habitava este mundo.</p>
+                {erro && <p className="font-old text-red-800 text-center text-base">{erro}</p>}
                 <div className="mt-16 flex justify-center items-center gap-10">
                   {nome.trim()
                     ? (
                         <button
                           onClick={handleStamp}
-                          disabled={stamped}
+                          disabled={stamped || loading}
                           className={['stamp-btn', stamped ? 'stamp-pressed' : ''].join(' ')}
                           title="Aceitar o destino"
                         >
                           <span className="stamp-inner">
                             <span className="stamp-cross">☩</span>
-                            <span className="stamp-text">ACEITO</span>
+                            <span className="stamp-text">{loading ? 'AGUARDE' : 'ACEITO'}</span>
                             <span className="stamp-sub">meu destino</span>
                           </span>
                         </button>

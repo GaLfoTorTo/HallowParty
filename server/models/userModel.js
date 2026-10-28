@@ -6,6 +6,12 @@ const find = (id) => prisma.user.findUnique({ where: { id: Number(id) } });
 
 const findByField = (field, value) => prisma.user.findFirst({ where: { [field]: value } });
 
+const TRILHA_LINHAGEM = { 1: 'vampiro', 2: 'fantasma', 3: 'zumbi' };
+const CATEGORIAS_COM_SORTEIO = ['enigmas', 'investigacao', 'observacao', 'busca'];
+const CATEGORIA_FIXA = 'desafio';
+
+const pickOne = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
 const create = async (nome, trilha_id) => {
   const disponiveis = await prisma.testamento.findMany({
     where: { trilha_id, completed: 0 },
@@ -15,12 +21,22 @@ const create = async (nome, trilha_id) => {
 
   const testamento = disponiveis[Math.floor(Math.random() * disponiveis.length)];
 
-  const missionIds = (
-    await prisma.testamentoMission.findMany({
-      where: { testamento_id: testamento.id },
-      select: { mission_id: true },
-    })
-  ).map((r) => r.mission_id);
+  const linhagem = TRILHA_LINHAGEM[trilha_id];
+
+  const missoesDaTrilha = await prisma.mission.findMany({
+    where: { linhagem },
+    select: { id: true, categoria: true },
+  });
+
+  const missionIds = [];
+
+  for (const cat of CATEGORIAS_COM_SORTEIO) {
+    const pool = missoesDaTrilha.filter((m) => m.categoria === cat);
+    if (pool.length) missionIds.push(pickOne(pool).id);
+  }
+
+  const desafio = missoesDaTrilha.find((m) => m.categoria === CATEGORIA_FIXA);
+  if (desafio) missionIds.push(desafio.id);
 
   return prisma.user.create({
     data: {
